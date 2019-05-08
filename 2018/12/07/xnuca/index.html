@@ -113,13 +113,15 @@
 <meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/8.png">
 <meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/9.png">
 <meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/2.png">
-<meta property="og:updated_time" content="2018-12-09T15:47:20.032Z">
+<meta property="og:updated_time" content="2019-05-08T15:27:59.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018X-NUCA线下渗透题总结">
 <meta name="twitter:description" content="前言这次x-npwn比赛时间两天，赛制是第一天先通过一个渗透测试环境，找到第二天要打的pwn题目和攻击机的密码（先找到先getshell，没找到就只能等预定官方时间颁布题目），所以最终都是为了pwn爷爷搭台子：）">
 <meta name="twitter:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/1.png">
 
 
+
+  <link rel="alternate" href="/atom.xml" title="一个向往acm的ctf_dog" type="application/atom+xml">
 
 
 
@@ -232,6 +234,57 @@
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
 
   </li>
         
@@ -360,7 +413,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-09 23:47:20" itemprop="dateModified" datetime="2018-12-09T23:47:20+08:00">2018-12-09</time>
+                <time title="Modified: 2019-05-08 23:27:59" itemprop="dateModified" datetime="2019-05-08T23:27:59+08:00">2019-05-08</time>
               
             
           </span>
@@ -400,7 +453,7 @@
 <p>得分点IP： /etc/xnuca/score_ip_list.txt</p>
 <p>攻防flag位置： /opt/xnuca/flag.txt</p>
 <p>比赛拓扑</p>
-<p><img src="xnuca/1.png" alt="1"></p>
+<p><img src="xnuca\1.png" alt="1"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Nmap scan report for 10.109.1.11  -- 22 80 139 443 445</span><br><span class="line">aka 10.109.3.11</span><br><span class="line">Nmap scan report for 10.109.1.12  -- 22 80 139 445</span><br><span class="line">aka 10.109.3.12</span><br><span class="line">Nmap scan report for 10.109.1.13  -- 22 80 139 445</span><br><span class="line">aka 10.109.2.13</span><br><span class="line">Nmap scan report for 10.109.1.14  -- 22 80 139 445</span><br><span class="line">aka 10.109.2.14</span><br><span class="line">Nmap scan report for 10.109.2.15  -- 22 80 139 445</span><br><span class="line">Nmap scan report for 10.109.2.16  -- 22 80 139 445</span><br><span class="line">Nmap scan report for 10.109.2.17  -- 21 22 139 445</span><br><span class="line">Nmap scan report for 10.109.3.18  -- 22 139 445</span><br><span class="line">Nmap scan report for 10.109.3.19  -- 22 139 445 3306</span><br><span class="line">Nmap scan report for 10.109.1.20  -- 22 139 445 873(rsync)</span><br><span class="line">Nmap scan report for 10.109.1.30  -- 22 139 445</span><br></pre></td></tr></table></figure>
 <p>一共三层网络，二层和三层只能通过一层访问，即<strong>10.109.2.0</strong>与<strong>10.109.3.0</strong>只能通过<strong>10.109.1.11-14</strong>访问，通过两层跳板转发至本地。</p>
 <h4 id="socat转发命令"><a href="#socat转发命令" class="headerlink" title="socat转发命令"></a>socat转发命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./socat -v tcp-listen:11480,reuseaddr,fork tcp-connect:10.109.1.14:80 &gt; /dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
@@ -628,6 +681,13 @@
             </nav>
           
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           

