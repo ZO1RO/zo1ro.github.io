@@ -90,6 +90,17 @@
   };
 </script>
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
 
   
 
@@ -98,18 +109,18 @@
 
   <meta name="description" content="永远做好最坏的打算">
 <meta property="og:type" content="website">
-<meta property="og:title" content="一个向往acm的ctf_dog">
+<meta property="og:title" content="ZO1RO">
 <meta property="og:url" content="https://zo1ro.github.io/page/2/index.html">
-<meta property="og:site_name" content="一个向往acm的ctf_dog">
+<meta property="og:site_name" content="ZO1RO">
 <meta property="og:description" content="永远做好最坏的打算">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个向往acm的ctf_dog">
+<meta name="twitter:title" content="ZO1RO">
 <meta name="twitter:description" content="永远做好最坏的打算">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="一个向往acm的ctf_dog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="ZO1RO" type="application/atom+xml">
 
 
 
@@ -125,7 +136,7 @@
   };
 </script>
 
-  <title>一个向往acm的ctf_dog</title>
+  <title>ZO1RO</title>
   
 
 
@@ -185,10 +196,14 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">一个向往acm的ctf_dog</span>
+        <span class="site-title">ZO1RO</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
+        <p class="site-subtitle">一个向往acm的ctf_dog</p>
+      
     
     
   </div>
@@ -325,6 +340,313 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zo1ro.github.io/2018/09/14/py-sandbox/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZO1RO">
+      <meta itemprop="description" content="永远做好最坏的打算">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZO1RO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/09/14/py-sandbox/" class="post-title-link" itemprop="url">Python沙盒逃逸</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-14 21:40:24" itemprop="dateCreated datePublished" datetime="2018-09-14T21:40:24+08:00">2018-09-14</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="沙盒逃逸简介"><a href="#沙盒逃逸简介" class="headerlink" title="沙盒逃逸简介"></a>沙盒逃逸简介</h2><p>沙箱逃逸,就是在给我们的一个代码执行环境下(Oj或使用socat生成的交互式终端),脱离种种过滤和限制,最终成功拿到shell权限的过程</p>
+<p>对于python的沙箱逃逸而言,我们来实现目的的最终想法有以下几个</p>
+<ul>
+<li>使用os包中的popen,system两个函数来直接执行shell</li>
+<li>使用commands模块中的方法</li>
+<li>使用subprocess</li>
+<li>使用写文件到指定位置,再使用其他辅助手段</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> commands</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接输入shell命令,以ifconfig举例</span></span><br><span class="line">os.system(<span class="string">'ifconfig'</span>)</span><br><span class="line">os.popen(<span class="string">'ifconfig'</span>)</span><br><span class="line">commands.getoutput(<span class="string">'ifconfig'</span>)</span><br><span class="line">commands.getstatusoutput(<span class="string">'ifconfig'</span>)</span><br><span class="line">subprocess.call([<span class="string">'ifconfig'</span>],shell=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/09/14/py-sandbox/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zo1ro.github.io/2018/08/27/legal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZO1RO">
+      <meta itemprop="description" content="永远做好最坏的打算">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZO1RO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/08/27/legal/" class="post-title-link" itemprop="url">【转】[中华人民共和国网络安全法]</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-27 22:05:39" itemprop="dateCreated datePublished" datetime="2018-08-27T22:05:39+08:00">2018-08-27</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>发布时间：2016-11-08 来源：政策法规司</p>
+</blockquote>
+<p>中华人民共和国主席令</p>
+<p>第五十三号</p>
+<p>《中华人民共和国网络安全法》已由中华人民共和国第十二届全国人民代表大会常务委员会第二十四次会议于2016年11月7日通过，现予公布，自2017年6月1日起施行。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/08/27/legal/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zo1ro.github.io/2018/03/28/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -334,7 +656,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个向往acm的ctf_dog">
+      <meta itemprop="name" content="ZO1RO">
     </span>
 
     
@@ -373,22 +695,6 @@
               <time title="Created: 2018-03-28 00:00:00" itemprop="dateCreated datePublished" datetime="2018-03-28T00:00:00+08:00">2018-03-28</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-08 19:21:10" itemprop="dateModified" datetime="2018-10-08T19:21:10+08:00">2018-10-08</time>
-              
             
           </span>
 
@@ -519,7 +825,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -542,7 +848,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -561,6 +869,32 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ZO1RO" title="GitHub &rarr; https://github.com/ZO1RO" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:em8xcm93ZWJAMTYzLmNvbQo=" title="E-Mail &rarr; mailto:em8xcm93ZWJAMTYzLmNvbQo=" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
           
 
           
@@ -696,9 +1030,18 @@
 
 
 
+  
+  
 
 
 
+  
+  
+
+
+
+  
+  
 
 
 
@@ -714,6 +1057,18 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_lines.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_sphere.min.js"></script>
 
 
   
@@ -761,6 +1116,21 @@
   
 
   
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+
 
   
 

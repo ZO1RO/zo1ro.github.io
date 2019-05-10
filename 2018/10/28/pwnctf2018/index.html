@@ -90,6 +90,17 @@
   };
 </script>
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
 
   
 
@@ -101,21 +112,21 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="P.W.N.CTF2018-web题解">
 <meta property="og:url" content="https://zo1ro.github.io/2018/10/28/pwnctf2018/index.html">
-<meta property="og:site_name" content="一个向往acm的ctf_dog">
+<meta property="og:site_name" content="ZO1RO">
 <meta property="og:description" content="pwnctf居然有web题，，， 日常复现学习一波。。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://zo1ro.github.io/2018/10/28/pwnctf2018/pwnctf2018/2.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/10/28/pwnctf2018/pwnctf2018/1.png">
-<meta property="og:image" content="https://zo1ro.github.io/2018/10/28/pwnctf2018/pwnctf2018/3.png">
-<meta property="og:updated_time" content="2019-05-08T15:26:16.308Z">
+<meta property="og:image" content="https://zo1ro.github.io/2018/10/28/pwnctf2018/2.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/10/28/pwnctf2018/1.png">
+<meta property="og:image" content="https://zo1ro.github.io/2018/10/28/pwnctf2018/3.png">
+<meta property="og:updated_time" content="2019-05-09T16:31:12.642Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="P.W.N.CTF2018-web题解">
 <meta name="twitter:description" content="pwnctf居然有web题，，， 日常复现学习一波。。">
-<meta name="twitter:image" content="https://zo1ro.github.io/2018/10/28/pwnctf2018/pwnctf2018/2.png">
+<meta name="twitter:image" content="https://zo1ro.github.io/2018/10/28/pwnctf2018/2.png">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="一个向往acm的ctf_dog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="ZO1RO" type="application/atom+xml">
 
 
 
@@ -131,7 +142,7 @@
   };
 </script>
 
-  <title>P.W.N.CTF2018-web题解 | 一个向往acm的ctf_dog</title>
+  <title>P.W.N.CTF2018-web题解 | ZO1RO</title>
   
 
 
@@ -190,10 +201,14 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">一个向往acm的ctf_dog</span>
+        <span class="site-title">ZO1RO</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
+        <p class="site-subtitle">一个向往acm的ctf_dog</p>
+      
     
     
   </div>
@@ -339,7 +354,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个向往acm的ctf_dog">
+      <meta itemprop="name" content="ZO1RO">
     </span>
 
     
@@ -376,22 +391,6 @@
               <time title="Created: 2018-10-28 23:27:04" itemprop="dateCreated datePublished" datetime="2018-10-28T23:27:04+08:00">2018-10-28</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-08 23:26:16" itemprop="dateModified" datetime="2019-05-08T23:26:16+08:00">2019-05-08</time>
-              
             
           </span>
 
@@ -432,7 +431,7 @@
 </blockquote>
 <p>题目通过url    <a href="http://foi.uni.hctf.fun/docs/document_001.pdf" target="_blank" rel="noopener">http://foi.uni.hctf.fun/docs/document_001.pdf</a></p>
 <p>访问300张pdf</p>
-<p><img src="pwnctf2018/2.png" alt></p>
+<p><img src="2.png" alt></p>
 <p>批量获取脚本</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> os.path <span class="keyword">import</span> join</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">URL = <span class="string">"http://foi.uni.hctf.fun/docs/"</span></span><br><span class="line">PATH = <span class="string">"~/"</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span>(i &lt; <span class="number">300</span>):</span><br><span class="line">	name = <span class="string">"document_%03d.pdf"</span> % i</span><br><span class="line">	print(<span class="string">"GETTING &gt;&gt;&gt;&gt; "</span>, name)</span><br><span class="line">	url = join(URL, name)</span><br><span class="line">	r = requests.get(url, stream=<span class="literal">True</span>)</span><br><span class="line">	<span class="keyword">if</span> (r.status_code == <span class="number">200</span>):</span><br><span class="line">		<span class="keyword">with</span> open(join(PATH, name), <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">			f.write(r.content)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		print(<span class="string">"adios &gt;&gt;&gt;&gt; "</span>, name)</span><br><span class="line">	i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# pdfgrep -r "flag" ~/</span><br><span class="line">~/document_255.pdf:Here it is: flag&#123;F1rst_Gr4d3rs_4r1thm3t1c_1s_d4ng3r0us&#125;</span><br></pre></td></tr></table></figure>
@@ -443,7 +442,7 @@
 <h4 id="Login-1-Source"><a href="#Login-1-Source" class="headerlink" title="[Login 1 Source]"></a>[Login 1 Source]</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> _0x86d1=[<span class="string">"\x68\x65\x78"</span>,<span class="string">"\x72\x61\x6E\x64\x6F\x6D\x42\x79\x74\x65\x73"</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generatePart1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">         &#123;</span><br><span class="line">             x: crypto[_0x86d1[<span class="number">1</span>]](<span class="number">8</span>)</span><br><span class="line">         &#125;[x].toString(_0x86d1[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generatePart2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [+!+[]]+[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]];</span><br><span class="line">&#125;</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/html'</span>&#125;);</span><br><span class="line">    passwd = generatePart1() + generatePart2();</span><br><span class="line">    <span class="keyword">var</span> url_content = url.parse(req.url, <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">if</span> (passwd == url_content.query.passwd) &#123;</span><br><span class="line">       res.write(fs.readFileSync(<span class="string">'flag.txt'</span>, <span class="string">'utf8'</span>));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res.write(<span class="string">'&lt;html&gt;&lt;body&gt;&lt;form method="get"&gt;&lt;input type="text" name="passwd" value="password"&gt;&lt;input type="submit" value="login" /&gt;&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    res.end();</span><br><span class="line">&#125;).listen(<span class="number">8888</span>);</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> function generatePart2() &#123;</span><br><span class="line">     return [+!+[]]+[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[!+ []+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]];</span><br><span class="line"> &#125;</span><br><span class="line">&lt; undefined</span><br><span class="line"><span class="meta">&gt;</span> generatePart2()</span><br><span class="line">&lt; "1337"</span><br></pre></td></tr></table></figure>
 <p>参考  <a href="https://www.jianshu.com/p/e375f0fbb71c" target="_blank" rel="noopener">JavaScript自动分号补齐的坑</a></p>
-<p><img src="pwnctf2018/1.png" alt></p>
+<p><img src="1.png" alt></p>
 <p>undefined1337传过去</p>
 <p>flag{W0w_1_gu3ss_th1s</p>
 <h4 id="Login-2-Source"><a href="#Login-2-Source" class="headerlink" title="[Login 2 Source]"></a>[Login 2 Source]</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span>(<span class="string">"flag.php"</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'passwd'</span>])) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hash(<span class="string">"md5"</span>, $_GET[<span class="string">'passwd'</span>]) == <span class="string">'0e514198428367523082236389979035'</span>)        &#123;</span><br><span class="line">                <span class="keyword">echo</span> $flag;</span><br><span class="line">        &#125; </span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'&lt;html&gt;&lt;body&gt;&lt;form method="get"&gt;&lt;input type="text" name="passwd" value="password"&gt;&lt;input type="submit" value="login" /&gt;&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;'</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
@@ -460,7 +459,7 @@
 </blockquote>
 <p>源码发现admin登录后台</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  Main navigation  --&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"main-nav nav navbar-nav navbar-right"</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#home"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#service"</span>&gt;</span>Services<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- &lt;li&gt;&lt;a href="/admin"&gt;Admin-Panel&lt;/a&gt;&lt;/li&gt; --&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">				<span class="comment">&lt;!-- /Main navigation --&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="pwnctf2018/3.png" alt></p>
+<p><img src="3.png" alt></p>
 <p>发送’过去</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user: '</span><br><span class="line">Error in: 1: FOR u IN users FILTER u.user == ''' &amp;&amp; u.passwd == '' RETURN u. -&gt;AQL: syntax error, unexpected quoted string near ''' RETURN u' at position 1:52 (while parsing). Errors: &#123;'error': True, 'errorMessage': "AQL: syntax error, unexpected quoted string near ''' RETURN u' at position 1:52 (while parsing)", 'code': 400, 'errorNum': 1501&#125;</span><br></pre></td></tr></table></figure>
 <p>回显发现是ArangoDB 数据库注入</p>
@@ -518,7 +517,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ctf/" rel="tag"># ctf</a>
+            <a href="/tags/ctf/" rel="tag">📖ctf</a>
           
         </div>
       
@@ -612,7 +611,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -635,7 +634,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -654,6 +655,32 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ZO1RO" title="GitHub &rarr; https://github.com/ZO1RO" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:em8xcm93ZWJAMTYzLmNvbQo=" title="E-Mail &rarr; mailto:em8xcm93ZWJAMTYzLmNvbQo=" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
           
 
           
@@ -806,9 +833,18 @@
 
 
 
+  
+  
 
 
 
+  
+  
+
+
+
+  
+  
 
 
 
@@ -824,6 +860,18 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_lines.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_sphere.min.js"></script>
 
 
   
@@ -877,6 +925,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 
