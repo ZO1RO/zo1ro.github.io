@@ -105,12 +105,13 @@
 
 
 
-  <meta name="description" content="前言本次比赛共三道WEB，一道PWN。一开场就全场炸鸡，无法ssh，大约过了50分钟才修好（有些队伍早已拿到题进行审计）。时常持续三个小时，通过web2的后门和web3的流量持续拿了不少分。复现一下发现还是有所收获的。（虚拟机总是损坏，拖的比较久，用window搭算了） Web1-EBCMS-v1.1.0 赛场上没做出来的题，赛后复现一下。 首先和源码diff一下，发现只有如下不同 app/hom">
+  <meta name="description" content="2019蓝帽杯决赛复现Write-up">
+<meta name="keywords" content="ctf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ZO1RO">
+<meta property="og:title" content="2019蓝帽杯决赛WP">
 <meta property="og:url" content="https://zo1ro.github.io/2019/08/31/blue-hat-final/index.html">
 <meta property="og:site_name" content="ZO1RO">
-<meta property="og:description" content="前言本次比赛共三道WEB，一道PWN。一开场就全场炸鸡，无法ssh，大约过了50分钟才修好（有些队伍早已拿到题进行审计）。时常持续三个小时，通过web2的后门和web3的流量持续拿了不少分。复现一下发现还是有所收获的。（虚拟机总是损坏，拖的比较久，用window搭算了） Web1-EBCMS-v1.1.0 赛场上没做出来的题，赛后复现一下。 首先和源码diff一下，发现只有如下不同 app/hom">
+<meta property="og:description" content="2019蓝帽杯决赛复现Write-up">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://zo1ro.github.io/2019/08/31/blue-hat-final/5.png">
 <meta property="og:image" content="https://zo1ro.github.io/2019/08/31/blue-hat-final/6.png">
@@ -119,10 +120,10 @@
 <meta property="og:image" content="https://zo1ro.github.io/2019/08/31/blue-hat-final/4.png">
 <meta property="og:image" content="https://zo1ro.github.io/2019/08/31/blue-hat-final/1.png">
 <meta property="og:image" content="https://zo1ro.github.io/2019/08/31/blue-hat-final/2.png">
-<meta property="og:updated_time" content="2019-08-31T12:12:38.403Z">
+<meta property="og:updated_time" content="2019-08-31T12:15:30.393Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZO1RO">
-<meta name="twitter:description" content="前言本次比赛共三道WEB，一道PWN。一开场就全场炸鸡，无法ssh，大约过了50分钟才修好（有些队伍早已拿到题进行审计）。时常持续三个小时，通过web2的后门和web3的流量持续拿了不少分。复现一下发现还是有所收获的。（虚拟机总是损坏，拖的比较久，用window搭算了） Web1-EBCMS-v1.1.0 赛场上没做出来的题，赛后复现一下。 首先和源码diff一下，发现只有如下不同 app/hom">
+<meta name="twitter:title" content="2019蓝帽杯决赛WP">
+<meta name="twitter:description" content="2019蓝帽杯决赛复现Write-up">
 <meta name="twitter:image" content="https://zo1ro.github.io/2019/08/31/blue-hat-final/5.png">
 
 
@@ -143,7 +144,7 @@
   };
 </script>
 
-  <title> | ZO1RO</title>
+  <title>2019蓝帽杯决赛WP | ZO1RO</title>
   
 
 
@@ -363,7 +364,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">2019蓝帽杯决赛WP
 
               
             
@@ -389,7 +390,7 @@
                 
               
 
-              <time title="Created: 2019-08-31 16:23:02" itemprop="dateCreated datePublished" datetime="2019-08-31T16:23:02+08:00">2019-08-31</time>
+              <time title="Created: 2019-08-31 11:31:54" itemprop="dateCreated datePublished" datetime="2019-08-31T11:31:54+08:00">2019-08-31</time>
             
 
             
@@ -424,7 +425,9 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本次比赛共三道<code>WEB</code>，一道<code>PWN</code>。一开场就全场炸鸡，无法<code>ssh</code>，大约过了50分钟才修好（有些队伍早已拿到题进行审计）。时常持续三个小时，通过<code>web2</code>的后门和<code>web3</code>的流量持续拿了不少分。复现一下发现还是有所收获的。（虚拟机总是损坏，拖的比较久，用<code>window</code>搭算了）</p>
+        <p>2019蓝帽杯决赛复现<code>Write-up</code></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本次比赛共三道<code>WEB</code>，一道<code>PWN</code>。一开场就全场炸鸡，无法<code>ssh</code>，大约过了50分钟才修好（有些队伍早已拿到题进行审计）。时常持续三个小时，通过<code>web2</code>的后门和<code>web3</code>的流量持续拿了不少分。复现一下发现还是有所收获的。（虚拟机总是损坏，拖的比较久，用<code>window</code>搭算了）</p>
 <h2 id="Web1-EBCMS-v1-1-0"><a href="#Web1-EBCMS-v1-1-0" class="headerlink" title="Web1-EBCMS-v1.1.0"></a>Web1-EBCMS-v1.1.0</h2><p><img src="5.png" alt></p>
 <p>赛场上没做出来的题，赛后复现一下。</p>
 <p>首先和源码<code>diff</code>一下，发现只有如下不同</p>
@@ -510,6 +513,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ctf/" rel="tag">📖ctf</a>
+          
+        </div>
       
 
       
