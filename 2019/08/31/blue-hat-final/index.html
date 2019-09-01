@@ -120,7 +120,7 @@
 <meta property="og:image" content="https://zo1ro.github.io/2019/08/31/blue-hat-final/4.png">
 <meta property="og:image" content="https://zo1ro.github.io/2019/08/31/blue-hat-final/1.png">
 <meta property="og:image" content="https://zo1ro.github.io/2019/08/31/blue-hat-final/2.png">
-<meta property="og:updated_time" content="2019-09-01T01:57:57.647Z">
+<meta property="og:updated_time" content="2019-09-01T14:22:15.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019蓝帽杯决赛WP">
 <meta name="twitter:description" content="2019蓝帽杯决赛复现Write-up">
@@ -470,7 +470,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">        if(isset($_GET[&apos;address&apos;]))&#123;</span><br><span class="line">                $address = $_GET[&apos;address&apos;];</span><br><span class="line">                if(filter_var($address,FILTER_VALIDATE_URL))&#123;</span><br><span class="line">                        $filter_url = parse_url($address);</span><br><span class="line">                        if(preg_match(&apos;/127.0.0.1/&apos;,$filter_url[&apos;host&apos;]))&#123;</span><br><span class="line">                                system(&apos;curl -v -s &apos;.$filter_url[&apos;host&apos;]);</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>这里并<code>curl.php</code>没有发现有可疑的地方（直接删除进行防护不碍事），初步猜测是在<code>ping.php</code>有个拼接命令进行执行（路由不清楚，也可以直接删除）。</p>
 <p>后门exp这里不在提供，参考 <a href="http://zo1ro.tk/2019/06/23/blue-hat-2019/" target="_blank" rel="noopener">湖北赛区WP</a></p>
-<h2 id="Web3-CatfishCMS-v4-8-54"><a href="#Web3-CatfishCMS-v4-8-54" class="headerlink" title="Web3-CatfishCMS-v4.8.54"></a>Web3-CatfishCMS-v4.8.54</h2><p><img src="1.png" alt></p>
+<h2 id="Web3-CatfishCMS-v4-8-54"><a href="#Web3-CatfishCMS-v4-8-54" class="headerlink" title="Web3-CatfishCMS-v4.8.54"></a>Web3-CatfishCMS-v4.8.54</h2><p><img src="1.png" alt="1"></p>
 <p>最近爆出的一个漏洞CNVD-2019-06255</p>
 <p>参考链接</p>
 <p><a href="https://blog.csdn.net/yun2diao/article/details/91344725" target="_blank" rel="noopener">CatfishCMS任意命令执行导致getshell</a></p>
