@@ -123,7 +123,7 @@
 <meta property="og:image" content="https://zo1ro.github.io/2019/09/22/2019qwb-erta/9.png">
 <meta property="og:image" content="https://zo1ro.github.io/2019/09/22/2019qwb-erta/10.png">
 <meta property="og:image" content="https://zo1ro.github.io/2019/09/22/2019qwb-erta/11.png">
-<meta property="og:updated_time" content="2019-09-23T05:20:25.497Z">
+<meta property="og:updated_time" content="2019-09-23T05:27:46.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019广东省强网杯线下赛应急响应Write-Up">
 <meta name="twitter:description" content="赛事简要本次线下赛分为上下午两场，上午为应急响应比赛，下午为 AWD 攻防赛。其中应急响应比赛分为事中应急响应（共两题）和事后应急响应（共九题）。以下是解题报告。">
@@ -456,7 +456,7 @@
 <p><code>/etc/xmr-stak-cpu/bin/xmr-stak-cpu</code></p>
 <p>通过上题的分析</p>
 <p><img src="10.png" alt></p>
-<p>可得到路径为 <code>/etc/xmr-stak-cpu/bin/xmr-stak-cpu</code><br>8、挖矿病毒钱包地址是<a href="mailto:fogyisland_x@hotmail.com" target="_blank" rel="noopener">fogyisland_x@hotmail.com</a>    通过查看挖矿程序的config.txt配置文件可以看到挖矿病毒的钱包地址</p>
+<p>可得到路径为 <code>/etc/xmr-stak-cpu/bin/xmr-stak-cpu</code><br>8、挖矿病毒钱包地址是 <a href="mailto:`fogyisland_x@hotmail.com" target="_blank" rel="noopener">`fogyisland_x@hotmail.com</a>` 通过查看挖矿程序的config.txt配置文件可以看到挖矿病毒的钱包地址</p>
 <p><img src="11.png" alt></p>
 <p>最后一题是恢复损坏的挂载卷，答案就藏在挂载卷上。没出 orz</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次应急响应有点像2018铁人三项赛的决赛赛程，那时候是用浏览器的 <code>shell</code> 登陆进去，在不知道任何问题的情况下进行溯源分析和取证，找出黑客攻击的整条链子。而这次是在知道问题的情况下进行溯源分析和取证，整个过程算是比较顺畅的（重新学一下系统的分区挂载卷恢复好了）。</p>
