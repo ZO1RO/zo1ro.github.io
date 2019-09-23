@@ -105,16 +105,29 @@
 
 
 
-  <meta name="description" content="永远做好最坏的打算">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ZO1RO">
-<meta property="og:url" content="https://zo1ro.github.io/archives/2018/10/index.html">
+  <meta name="description" content="赛事简要本次线下赛分为上下午两场，上午为应急响应比赛，下午为 AWD 攻防赛。其中应急响应比赛分为事中应急响应（共两题）和事后应急响应（共九题）。以下是解题报告。 ##事中应急响应 1、服务正在遭受口令破解攻击 12使用tcpdump -w 20190922linc.pcap -i eth0使用wireshark分析  1发现ip8.8.8.9在对login.php页面进行爆破密码  2、防护措施">
+<meta name="keywords" content="ERTA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019广东省强网杯线下赛应急响应Write-Up">
+<meta property="og:url" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/index.html">
 <meta property="og:site_name" content="ZO1RO">
-<meta property="og:description" content="永远做好最坏的打算">
+<meta property="og:description" content="赛事简要本次线下赛分为上下午两场，上午为应急响应比赛，下午为 AWD 攻防赛。其中应急响应比赛分为事中应急响应（共两题）和事后应急响应（共九题）。以下是解题报告。 ##事中应急响应 1、服务正在遭受口令破解攻击 12使用tcpdump -w 20190922linc.pcap -i eth0使用wireshark分析  1发现ip8.8.8.9在对login.php页面进行爆破密码  2、防护措施">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/1.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/3.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/4.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/5.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/6.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/7.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/8.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/9.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/10.png">
+<meta property="og:image" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/11.png">
+<meta property="og:updated_time" content="2019-09-23T05:18:31.188Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZO1RO">
-<meta name="twitter:description" content="永远做好最坏的打算">
+<meta name="twitter:title" content="2019广东省强网杯线下赛应急响应Write-Up">
+<meta name="twitter:description" content="赛事简要本次线下赛分为上下午两场，上午为应急响应比赛，下午为 AWD 攻防赛。其中应急响应比赛分为事中应急响应（共两题）和事后应急响应（共九题）。以下是解题报告。 ##事中应急响应 1、服务正在遭受口令破解攻击 12使用tcpdump -w 20190922linc.pcap -i eth0使用wireshark分析  1发现ip8.8.8.9在对login.php页面进行爆破密码  2、防护措施">
+<meta name="twitter:image" content="https://zo1ro.github.io/2019/09/23/2019qwb-erta/1.png">
 
 
 
@@ -124,7 +137,7 @@
 
   
   
-  <link rel="canonical" href="https://zo1ro.github.io/archives/2018/10/">
+  <link rel="canonical" href="https://zo1ro.github.io/2019/09/23/2019qwb-erta/">
 
 
 
@@ -134,7 +147,7 @@
   };
 </script>
 
-  <title>Archive | ZO1RO</title>
+  <title>2019广东省强网杯线下赛应急响应Write-Up | ZO1RO</title>
   
 
 
@@ -182,7 +195,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -275,7 +288,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -296,25 +309,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -340,148 +334,205 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zo1ro.github.io/2019/09/23/2019qwb-erta/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZO1RO">
+      <meta itemprop="description" content="永远做好最坏的打算">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZO1RO">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">2019广东省强网杯线下赛应急响应Write-Up
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-09-23 12:23:24" itemprop="dateCreated datePublished" datetime="2019-09-23T12:23:24+08:00">2019-09-23</time>
+            
+
+            
+          </span>
+
           
-        
-        Um..! 16 posts in total. Keep on posting.
-      </span>
-      
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2018/10/28/pwnctf2018/" itemprop="url">
             
-              <span itemprop="name">P.W.N.CTF2018-web题解</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-28T23:27:04+08:00" content="2018-10-28">
-          10-28
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2018/10/22/babyphp/" itemprop="url">
-            
-              <span itemprop="name">Hack.lu CTF 2018 - Baby PHP</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-22T21:27:01+08:00" content="2018-10-22">
-          10-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2018/10/15/2018pico1/" itemprop="url">
-            
-              <span itemprop="name">2018picoctf复现I</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-15T11:31:54+08:00" content="2018-10-15">
-          10-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h1 id="赛事简要"><a href="#赛事简要" class="headerlink" title="赛事简要"></a>赛事简要</h1><p>本次线下赛分为上下午两场，上午为应急响应比赛，下午为 <code>AWD</code> 攻防赛。其中应急响应比赛分为事中应急响应（共两题）和事后应急响应（共九题）。以下是解题报告。</p>
+<p>##事中应急响应</p>
+<p>1、服务正在遭受口令破解攻击</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用tcpdump -w 20190922linc.pcap -i eth0</span><br><span class="line">使用wireshark分析</span><br></pre></td></tr></table></figure>
+<p><img src="1.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">发现ip8.8.8.9在对login.php页面进行爆破密码</span><br></pre></td></tr></table></figure>
+<p><img src="3.png" alt></p>
+<p>2、防护措施</p>
+<p>C、将攻击源IP地址添加到防火墙<br>D、修改弱口令为强口令<br>E、安装WAF、IPS等防护软件或硬件</p>
+<h2 id="事后应急响应"><a href="#事后应急响应" class="headerlink" title="事后应急响应"></a>事后应急响应</h2><p>1、黑客留下的扩展名为php的webshell名称为<br><code>admmanager.php</code></p>
+<p>将web目录使用d盾进行扫描发现存在 <code>webshell admmanager.php</code> 其上传日期为 <code>9月15日</code> 。<br>2、web访问日志存储路径是（绝对路径）<br><code>/var/log/apache2/access.log</code> ，Web默认访问日志绝对路径为<br><code>/var/log/apache2/access.log</code><br>3、成功入侵服务器（拿到 <code>root</code> 权限）的黑客的IP地址为 <code>172.16.5.143</code> 。通过查询 <code>/var/log/auth.log</code>  查看登陆信息<br>发现存在几个 <code>ip</code> 使用了 <code>root</code> 权限进行了 <code>ssh</code> 登陆</p>
+<p><img src="4.png" alt></p>
+<p>查看 <code>/etc/passwd</code>  发现 <code>mysql</code> 用户被加入了 <code>root</code> 用户权限组<br>确认为黑客留下的后门账户，从而定位使用 <code>mysq1</code> 登陆 <code>ssh</code> 的 <code>172.16.5.143</code> 的  <code>ip</code> </p>
+<p>4、黑客创建的具有 <code>root</code> 权限的系统后门账户名称是<br><code>mysq1</code>    同三<br>5、黑客使用其创建的后门账户第一次成功登陆操作系统的时间为<br> <code>10:34:30</code> </p>
+<p><img src="5.png" alt></p>
+<p>6、黑客部署的挖矿病毒进程名称是 <code>xmr-stak-cpu</code> </p>
+<p>对系统进程进行分析，我们先查看了<code>crontab</code> 进程里面是否存在异常</p>
+<p>发现会定时执行 <code>/bin/22.sh</code> 然后跟进分析发现这是调用挖矿程序的sh脚本</p>
+<p><img src="6.png" alt> </p>
+<p><img src="7.png" alt></p>
+<p><img src="8.png" alt></p>
+<p>查询进程发现挖矿程序还在运行</p>
+<p><img src="9.png" alt></p>
+<p>7、挖矿病毒进程对应的可执行程序的存放路径是（绝对路径）</p>
+<p><code>/etc/xmr-stak-cpu/bin/xmr-stak-cpu</code></p>
+<p>通过上题的分析</p>
+<p><img src="10.png" alt></p>
+<p>可得到路径为 <code>/etc/xmr-stak-cpu/bin/xmr-stak-cpu</code><br>8、挖矿病毒钱包地址是<a href="mailto:fogyisland_x@hotmail.com" target="_blank" rel="noopener">fogyisland_x@hotmail.com</a>    通过查看挖矿程序的config.txt配置文件可以看到挖矿病毒的钱包地址</p>
+<p><img src="11.png" alt></p>
+<p>最后一题是恢复损坏的挂载卷，答案就藏在挂载卷上。没出 orz</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本次应急响应有点像2018铁人三项赛的决赛赛程，那时候是用浏览器的 <code>shell</code> 登陆进去，在不知道任何问题的情况下进行溯源分析和取证，找出黑客攻击的整条链子。而这次是在知道问题的情况下进行溯源分析和取证，整个过程算是比较顺畅的（重新学一下系统的分区挂载卷恢复好了）。</p>
 
       
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+      <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ERTA/" rel="tag">📖ERTA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/01/suctf-2019/" rel="next" title="SUCTF-2019-Web-复现">
+                <i class="fa fa-chevron-left"></i> SUCTF-2019-Web-复现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -501,8 +552,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -651,6 +711,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#赛事简要"><span class="nav-number">1.</span> <span class="nav-text">赛事简要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事后应急响应"><span class="nav-number">1.1.</span> <span class="nav-text">事后应急响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -774,6 +851,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -789,6 +870,8 @@
 
   
 
+
+  
 
 
   
