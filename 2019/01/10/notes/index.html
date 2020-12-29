@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="日常笔记–notes">
+  <meta name="description" content="该文章已加密, 请输入密码查看。">
 <meta name="keywords" content="md">
 <meta property="og:type" content="article">
 <meta property="og:title" content="notes">
 <meta property="og:url" content="https://zo1ro.github.io/2019/01/10/notes/index.html">
 <meta property="og:site_name" content="ZO1RO">
-<meta property="og:description" content="日常笔记–notes">
+<meta property="og:description" content="该文章已加密, 请输入密码查看。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-12-29T12:52:45.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="notes">
-<meta name="twitter:description" content="日常笔记–notes">
+<meta name="twitter:description" content="该文章已加密, 请输入密码查看。">
 
 
 
@@ -417,12 +417,19 @@
       
 
       
-        <p>日常笔记–notes<br><a id="more"></a></p>
-<p>十六进制&amp;ascii查看</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexdump -Cv filename</span><br></pre></td></tr></table></figure>
-<p>window杀进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano | findstr 3306</span><br><span class="line">tasklist | findstr 3306</span><br><span class="line">taskkill  /F /PID pid</span><br></pre></td></tr></table></figure>
-
+        <div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="该文章已加密, 请输入密码查看。">
+    <label for="pass">该文章已加密, 请输入密码查看。</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+U2FsdGVkX1+XvH/TSHzhg9fqNNVmbg5/w+AX9xJO7OJHkcLoH3ZIKGbF/8jpgJMKCckikMjtgYv7JCOxWN6dzYinQWRj7USJFv39jTksmGyezZmffGsvtdrzz8RdvhHB3/7Fr5w0wdYWAf1Zdqs9XMj7k/dkpJZgQKibpNC3CrqpNxBK1zSPWWcXeVxQ0tqiw6q1GAauMwhpLZzHvGjrWHuW90uwNmSXIF/x4G/f+bG+1p9/PTpd8J2D8+vR+tAS1h9d9J/ZRTCGWGo1kit6Pf3exlsrbX4riGh2AKEU2LXjPNyu2OEr8NakSTalcRCG/abKglTLtjSXaqf2tuP8JfIsu1f8w3Gai6fZ21idQjBpmX9UFGVPPYvCtXv1u0ve6Bij9tPT1XmeaxxIVeVfTYjpH6ygjlC1zvUS3RcOhHJQ3Yqpyvq+vWKHKD5bojau6EzoIxStjSFxDGqEVoOfYGaffBpF90/w8hRIzHuRvjEPeRY4wrosGCyDCpaordsXF2qt3G9Kxdsv9Ar31+fZYqM/KtBLAmiRvjz04WJZxUJdeWTsESNyEesUletUeLuvu/XJkTPaIRV27FbY8UU7vqkq/SE3Qh6rijLEjQ3nv/w4p5MZI3H52MBRWhz7hhr4A0CHJIfCr10A9GPiYFk+9wVw2p36u6JAU+DnBQs5tWrO5YY+KhYe59BTjfeapDMJyIqvp1+f2Wms03Mfysl7/X3v+XwwDc05oNkqIOZcYRhE1t401pRNMQBx/JTBiNK9VuD2KjJutIrd1hdFDu0S5GGvp19qHQJMkED5pyM/eBwyxmUweIqRPXi9RBHZsPt0y3AW8DJWJ7XtEnzoTEbwskPwpsblHMpFgM3x45THt3KwoZdYIxyT/omWrmy+FOWRwJE1RPsEqWWH0kec64I5pdGZytf46NZUAqq9iwgFCr8PMSfKcLrszrQ2714gn0rjQflAUho8uZuDkZ7JiwPFd/80D5Vc9NvVA7k4l81KJnt9vMMDCKH0t2uHCYc6RxDkWz5YN1UIMVT+29WnAydp4uT2XFsFCtYZifquu41MNQW661iq920irnF23tg1Pa/04rf4mzD+ws0iU3xozBq8sctXlVGaG1q5SlvYN2sulCIVkiNyc3YfoV1U8j8KxPQ0VAmEDmeFffPz+LD+pN6hM05UoEHFxmuiExWgr79O2S+XdMZ4lTuLPCwkJqJkj0IkFLNbCnQQ66nLUlgnjoUOJgkgYE9bIBSxvQQRGUhGZYzwqGoAeGN317LfEoxpqct7u+mLaWgKueANINhMaSLHpd4zPD9Sa4UD4G0E1OMoNq8R0ug2gFb7gaR50RUe0qAZgs0his0jq5cIdaCK9u3VzvXw/HnC92I+X0MnI4Qi2oq5eZgKZSzaVJQ+U95yzAvPCiMAm9MJaOoX0Pqqqd9OAje3bx3seaXbDASGuR6zJV01eFCpw/gw/lpNJJxQYMCM6mZWyiDQ+sPyICQzsU1IHI1wPitRg5452N8h4Kn18CL4yNeDfka0moY4RQVCRBRYtBCms+NbRIGv/mP71losMPJRektpJ4YTHB5KXKgmTgA=
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
     </div>
 
